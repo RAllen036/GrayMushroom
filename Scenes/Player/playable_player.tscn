@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://7l2cdyrkf882"]
+
+[ext_resource type="Texture2D" uid="uid://6ubgp2l1ibks" path="res://Assets/Placeholder/Placeholder.png" id="1_kesue"]
+[ext_resource type="Script" path="res://Scenes/Player/playable_player.gd" id="1_m8ihb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oidif"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_aqmgy"]
+resource_name = "RESET"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jx4up"]
+_data = {
+"RESET": SubResource("Animation_aqmgy")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_m8ihb")
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_oidif")
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_kesue")
+
+[node name="Accesories" type="Node2D" parent="."]
+
+[node name="BodyAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jx4up")
+}
+
+[node name="Cam" type="Camera2D" parent="."]

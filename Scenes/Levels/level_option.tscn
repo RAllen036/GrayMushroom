@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfj1k11l2f3nu"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/level_option.gd" id="1_1edfl"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u3s4h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rj1o"]
+
+[node name="LevelOption" type="Node2D"]
+script = ExtResource("1_1edfl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-1.14441e-05, -5.68434e-13)
+rotation = 1.5708
+scale = Vector2(100, 75)
+mesh = SubResource("CapsuleMesh_u3s4h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_2rj1o")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
