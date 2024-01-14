@@ -32,6 +32,7 @@ func keys_pressed():
 	if Input.is_key_pressed(KEY_X): pressed.append("X")
 	if Input.is_key_pressed(KEY_Y): pressed.append("Y")
 	if Input.is_key_pressed(KEY_Z): pressed.append("Z")
+	if Input.is_key_pressed(KEY_SPACE): pressed.append("SPACE")
 	
 	# A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 	print(pressed)
