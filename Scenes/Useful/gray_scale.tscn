@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg5u2xrwxlye6"]
+[gd_scene load_steps=6 format=3 uid="uid://cg5u2xrwxlye6"]
 
 [ext_resource type="Shader" path="res://Shaders/gray_scale.gdshader" id="1_4xlr2"]
 [ext_resource type="Script" path="res://Scenes/Useful/gray_scale.gd" id="1_58anu"]
 [ext_resource type="Texture2D" uid="uid://bv06ktjqhbxfu" path="res://Assets/Shaders/BasicBlueBorder.png" id="2_qytob"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_8rlg4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_028if"]
 shader = ExtResource("1_4xlr2")
@@ -13,19 +11,12 @@ shader_parameter/mixer = 1.0
 [sub_resource type="BoxMesh" id="BoxMesh_2ejda"]
 
 [node name="GrayScale" type="Node2D"]
-position = Vector2(30, 30)
 script = ExtResource("1_58anu")
 
 [node name="Border" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(1.52941, 1.52941)
 texture = ExtResource("2_qytob")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0.4, 0.701961, 0.482353, 1)
-position = Vector2(25.625, -1.19209e-07)
-scale = Vector2(76.75, 19.5)
-mesh = SubResource("BoxMesh_8rlg4")
 
 [node name="GrayedArea" type="MeshInstance2D" parent="."]
 material = SubResource("ShaderMaterial_028if")

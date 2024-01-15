@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://7l2cdyrkf882" path="res://Scenes/Player/playable_player.tscn" id="2_phj1b"]
 
 [node name="LevelSelector" type="Node2D"]
+top_level = true
 script = ExtResource("1_khn25")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_phj1b")]
-position = Vector2(570, 440)
+position = Vector2(576, 324)
 
 [node name="LevelOptions" type="Marker2D" parent="."]
-position = Vector2(137, 200)
+position = Vector2(122, 0)

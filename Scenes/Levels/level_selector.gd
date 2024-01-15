@@ -9,6 +9,12 @@ var option_buffer: float = 300
 # This function is only called once when the scene is initialised / instantiated
 func _ready():
 	
+	var tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Player, "modulate", Color.RED, 1)
+	tween.tween_property($Player, "scale", Vector2(), 1)
+	tween.chain().tween_property($Player, "scale", Vector2(1, 1), 1)
+	tween.chain().tween_property($Player, "modulate", Color.WHITE, 1)
+	
 	# Gets all the files in the Levels folder
 	# Removes all .gd files
 	# Remoevs the level selector
@@ -48,3 +54,4 @@ func _on_option_selected(level_name, body):
 
 func _input(event):
 	Keys.keys_pressed()
+	
