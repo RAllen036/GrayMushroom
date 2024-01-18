@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://djyq8rg3knny4"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/Game.gd" id="1_rfqai"]
+[ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/Levels/Conductor.tscn" id="2_eik3v"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_rfqai")
+
+[node name="Conductor" parent="." instance=ExtResource("2_eik3v")]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyb7lmmrk5pp8"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/Level/Note.gd" id="1_66w4t"]
+[ext_resource type="Texture2D" uid="uid://6ubgp2l1ibks" path="res://Assets/Placeholder/Placeholder.png" id="2_v05yn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eupam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v05yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v05yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v05yn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Note" type="Node2D" groups=["note"]]
+script = ExtResource("1_66w4t")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eupam")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 4.2

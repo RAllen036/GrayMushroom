@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7bx3my0tu4k"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/Level/End.gd" id="1_ptq6l"]
+[ext_resource type="Texture2D" uid="uid://cogi2s87c2v6r" path="res://Assets/Buttons/play_again_button/play_again1.png" id="2_5dei2"]
+[ext_resource type="Texture2D" uid="uid://b8g1xjupf8i84" path="res://Assets/Buttons/play_again_button/play_again2.png" id="3_tg7dj"]
+[ext_resource type="Texture2D" uid="uid://0ajeamg73255" path="res://Assets/Buttons/back_to_menu_button/back_to_menu1.png" id="4_wjddd"]
+[ext_resource type="Texture2D" uid="uid://bjdj4v66pmohx" path="res://Assets/Buttons/back_to_menu_button/back_to_menu2.png" id="5_i12q7"]
+
+[node name="End" type="Node2D"]
+script = ExtResource("1_ptq6l")
+
+[node name="PlayAgain" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_5dei2")
+texture_pressed = ExtResource("2_5dei2")
+texture_hover = ExtResource("3_tg7dj")
+
+[node name="BackToMenu" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("4_wjddd")
+texture_pressed = ExtResource("4_wjddd")
+texture_hover = ExtResource("5_i12q7")
+
+[node name="GradeLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "grade:"
+
+[node name="GradeNumber" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "final score:"
+
+[node name="ScoreNumber" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ComboLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "max combo:"
+
+[node name="ComboNumber" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="GreatLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "great:"
+
+[node name="GreatNumber" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="GoodLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "good:"
+
+[node name="GoodNumber" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="OkayLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "okay:"
+
+[node name="OkayNumber" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MissedLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "missed:"
+
+[node name="MissedNumber" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="BackToMenu" to="." method="_on_back_to_menu_pressed"]
