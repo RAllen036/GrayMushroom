@@ -22,7 +22,7 @@ func _input(event):
 				current_note.destroy(1)
 			reset()
 		else:
-			get_parent().increment_score(0)
+			get_parent().increment_score(randi_range(0,3))
 	if event.is_action_pressed(button):
 		$AnimatedSprite2D.frame = 1
 	elif event.is_action_released(button):

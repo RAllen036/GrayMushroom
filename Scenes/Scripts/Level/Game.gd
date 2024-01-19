@@ -5,6 +5,10 @@ extends Node2D
 @onready var label = $Panel/Label
 @onready var combo_label = $Panel/Combo
 @onready var conductor = $Conductor
+@onready var start_timer = $StartWait
+@onready var end_timer = $EndWait
+
+var measures = []
 
 var score = 0
 var combo = 0
@@ -30,12 +34,13 @@ var rand = 0
 var finished: bool = false
 
 func _ready():
+	get_beat_layout()
 	randomize()
 	conductor.play_with_beat_offset(8)
 
 func _input(event):
 	if Input.is_action_pressed("ui_cancel"):
-		Switch.scene(self, "res://Scenes/Levels/level_selector.tscn")
+		song_finished()
 
 func song_finished():
 	Score.set_score(score)
@@ -90,6 +95,7 @@ func reset_combo():
 	combo_label.text = ""
 
 func _on_conductor_measurex(pos):
+	print(spawn_beat[pos - 1])
 	spawn_notes(spawn_beat[pos - 1])
 
 # This function / signal thing is what controls the amount of buttons on the screen
@@ -97,27 +103,62 @@ func _on_conductor_measurex(pos):
 # ~~ are from a text file that someone has put timings in
 func _on_conductor_beat(pos):
 	song_position_in_beats = pos
-	if song_position_in_beats > 36:
-		spawn_beat = [1, 1, 1, 1]
-	if song_position_in_beats > 98:
-		spawn_beat = [2, 0, 1, 0]
-	if song_position_in_beats > 132:
-		spawn_beat = [0, 2, 0, 2]
-	if song_position_in_beats > 162:
-		spawn_beat = [2, 2, 1, 1]
-	if song_position_in_beats > 194:
-		spawn_beat = [2, 2, 1, 2]
-	if song_position_in_beats > 228:
-		spawn_beat = [0, 2, 1, 2]
-	if song_position_in_beats > 258:
-		spawn_beat = [1, 2, 1, 2]
-	if song_position_in_beats > 288:
-		spawn_beat = [0, 2, 0, 2]
-	if song_position_in_beats > 322:
-		spawn_beat = [3, 2, 2, 1]
-	if song_position_in_beats > 388:
-		spawn_beat = [1, 0, 0, 0]
-	if song_position_in_beats > 396:
-		spawn_beat = [0, 0, 0, 0]
-	if song_position_in_beats > 404:
-		song_finished()
+	for item in measures:
+		if song_position_in_beats > item[0]:
+			spawn_beat = item[1]
+
+# x = song_pos_in_beats % 4 #### This will be when the pattern should start
+# x = song_pos_in_measure
+# Format = x:note_pattern
+func get_beat_layout():
+	# Read file
+	# Gets the file as an object
+	var file = FileAccess.open("res://BeatLayout/Game.txt", FileAccess.READ)
+	# Gets the contents of the file
+	var content = file.get_as_text()
+	# Good practice so that corruption is less likely
+	file.close()
+	# Remove \n
+	var content_list = content.split("\n", false)
+	# Get the Values as boolean and add to measure based on instruments playing
+	var new_content_list = []
+	var last_set = ["00000"]
+	var measure = []
+	
+	# Add comment on the absurdity below when able
+	
+	for i in range(0, content_list.size() - 1):
+		
+		if content_list[i] == "^":
+			content_list[i] = last_set
+		else:
+			last_set = content_list[i]
+		
+		var temp_bool_list = []
+		var total: int = 0
+		for char in content_list[i]:
+			var temp_int = char.to_int()
+			total += temp_int
+			temp_bool_list.append(bool(temp_int))
+		
+		measure.append(total)
+		
+		new_content_list.append(temp_bool_list)
+		
+		if measure.size() == 4:
+			measures.append(measure)
+			measure = []
+	#print(new_content_list)
+	print(measures)
+	
+
+# Tells us when the song is finished and waits 3 seconds for anything on screen
+func _on_conductor_finished():
+	end_timer.start()
+
+func _on_end_wait_timeout():
+	song_finished()
+
+
+func _on_start_wait_timeout():
+	conductor.play_with_beat_offset(8)
