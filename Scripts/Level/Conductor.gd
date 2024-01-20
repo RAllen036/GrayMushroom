@@ -34,6 +34,7 @@ func report_beat():
 func play_song():
 	play()
 
+# Not used yet
 func play_with_beat_offset(num):
 	beats_before_start = num
 	$StartTimer.wait_time = sec_per_beat
@@ -52,6 +53,7 @@ func _on_start_timer_timeout():
 	else:
 		play_song()
 
+# Not used yet
 func closest_beat(nth):
 	closest = int(round((song_position / sec_per_beat) / nth) * nth)
 	time_off_beat = abs(closest * sec_per_beat - song_position)

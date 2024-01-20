@@ -17,9 +17,12 @@ func _physics_process(delta):
 			get_parent().get_parent().reset_combo()
 	else:
 		$Node2D.position.x += speed * delta
+		var tween = get_tree().create_tween()
+		tween.tween_property($Node2D, "scale", Vector2(0.15, 0.15), 2)
+		if $Node2D.scale <= Vector2(0.2, 0.2):
+			queue_free()
 
 func init(lane):
-	
 	$AnimatedSprite2D.frame = lane
 	position = Vector2(0, SPAWN_Y + 20 * lane)
 	speed = TARGET_X / 2.0
@@ -27,7 +30,6 @@ func init(lane):
 func destroy(score):
 	$CPUParticles2D.emitting = true
 	$AnimatedSprite2D.hide()
-	$Timer.start()
 	hit = true
 	if score == 3:
 		$Node2D/Label.text = "GREAT"
@@ -38,6 +40,3 @@ func destroy(score):
 	elif score == 1:
 		$Node2D/Label.text = "OKAY"
 		$Node2D/Label.modulate = Color("997577")
-
-func _on_Timer_timeout():
-	queue_free()

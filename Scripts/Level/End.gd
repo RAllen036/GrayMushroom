@@ -1,5 +1,4 @@
-extends Node2D
-
+extends CanvasLayer
 
 func _ready():
 	$GradeNumber.text = Score.grade
@@ -12,7 +11,7 @@ func _ready():
 	
 
 func _on_back_to_menu_pressed():
-	Switch.scene(self, "res://Scenes/Levels/level_selector.tscn")
+	Switch.scene(get_parent(), "res://Scenes/Levels/level_selector.tscn")
 
 func _on_play_again_pressed():
-	Switch.scene(self, "res://Scenes/Levels/Game.tscn")
+	get_tree().reload_current_scene()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cyb7lmmrk5pp8"]
 
-[ext_resource type="Script" path="res://Scenes/Scripts/Level/Note.gd" id="1_66w4t"]
+[ext_resource type="Script" path="res://Scripts/Level/Note.gd" id="1_a8lpm"]
 [ext_resource type="Texture2D" uid="uid://6ubgp2l1ibks" path="res://Assets/Placeholder/Placeholder.png" id="2_v05yn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eupam"]
@@ -27,18 +27,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htiab"]
-size = Vector2(16, 16)
+size = Vector2(10, 16)
 
 [node name="Note" type="Node2D" groups=["note"]]
-script = ExtResource("1_66w4t")
+script = ExtResource("1_a8lpm")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="Node2D"]
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eupam")

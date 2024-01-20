@@ -1,12 +1,15 @@
 extends Node2D
 
 @onready var note = preload("res://Scenes/Levels/Note.tscn")
+@onready var end_screen = preload("res://Scenes/Levels/End.tscn")
 @onready var note_holder = $Notes
 @onready var label = $Panel/Label
 @onready var combo_label = $Panel/Combo
 @onready var conductor = $Conductor
 @onready var start_timer = $StartWait
 @onready var end_timer = $EndWait
+
+@export var beat_file_name = "Game"
 
 var measures = []
 var lane_pos = []
@@ -44,22 +47,26 @@ func _input(event):
 		song_finished()
 
 func song_finished():
+	if conductor.playing == true:
+		conductor.stop()
 	Score.set_score(score)
 	Score.combo = max_combo
 	Score.great = great
 	Score.good = good
 	Score.okay = okay
 	Score.missed = missed
-	Switch.scene(self, "res://Scenes/Levels/End.tscn")
+	var end = end_screen.instantiate()
+	add_child(end)
 
 func spawn_notes(pos):
 	
-	for i in range(0, lane_pos[pos].size() - 1):
-		if lane_pos[pos][i]:
-			var ins = note.instantiate()
-			note_holder.add_child(ins)
-			ins.init(i)
-			ins.add_to_group("note", true)
+	if pos < lane_pos.size():
+		for i in range(0, lane_pos[pos].size()):
+			if lane_pos[pos][i]:
+				var ins = note.instantiate()
+				note_holder.add_child(ins)
+				ins.init(i)
+				ins.add_to_group("note", true)
 	
 
 func increment_score(by):
@@ -94,20 +101,18 @@ func reset_combo():
 func _on_conductor_beat(pos):
 	spawn_notes(pos)
 
-# x = song_pos_in_beats % 4 #### This will be when the pattern should start
-# x = song_pos_in_measure
-# Format = x:note_pattern
+
 func get_beat_layout():
 	# Read file
 	# Gets the file as an object
-	var file = FileAccess.open("res://BeatLayout/Game.txt", FileAccess.READ)
+	var file = FileAccess.open("res://BeatLayout/" + beat_file_name + ".txt", FileAccess.READ)
 	# Gets the contents of the file
 	var content = file.get_as_text()
 	# Good practice so that corruption is less likely
 	file.close()
 	# Remove \n
 	var content_list = content.split("\n", false)
-	# Get the Values as boolean and add to measure based on instruments playing
+	# Get the Values as boolean based on instruments playing
 	var new_content_list = []
 	var last_set = ["00000"]
 	

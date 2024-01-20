@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://djyq8rg3knny4"]
 
-[ext_resource type="Script" path="res://Scenes/Scripts/Level/Game.gd" id="1_rfqai"]
+[ext_resource type="Script" path="res://Scripts/Level/Game.gd" id="1_rfqai"]
 [ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/Levels/Conductor.tscn" id="2_eik3v"]
 [ext_resource type="AudioStream" uid="uid://b5u8h36teh5kw" path="res://Assets/Music/Grow.mp3" id="3_1c8w2"]
 [ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/Levels/button.tscn" id="4_un6us"]
@@ -12,10 +12,10 @@ script = ExtResource("1_rfqai")
 stream = ExtResource("3_1c8w2")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = -505.0
-offset_top = 303.0
-offset_right = -68.0
-offset_bottom = 559.0
+offset_left = 252.0
+offset_top = 66.0
+offset_right = 689.0
+offset_bottom = 322.0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
@@ -49,7 +49,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="ButtonHolder" type="Node2D" parent="."]
-position = Vector2(370, 373)
+position = Vector2(430, 373)
 
 [node name="Button1" parent="ButtonHolder" instance=ExtResource("4_un6us")]
 position = Vector2(0, 120)

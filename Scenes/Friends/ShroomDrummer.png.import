@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://befswgmsy5fgt"
-path="res://.godot/imported/ShroomCymbal.png-56136ab3cb24c982f0cefedb4b123515.ctex"
+uid="uid://ddhiqlrh0a527"
+path="res://.godot/imported/ShroomDrummer.png-e97bd4e3151f2b549fdecaa5a4270c08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Friends/ShroomCymbal.png"
-dest_files=["res://.godot/imported/ShroomCymbal.png-56136ab3cb24c982f0cefedb4b123515.ctex"]
+source_file="res://Scenes/Friends/ShroomDrummer.png"
+dest_files=["res://.godot/imported/ShroomDrummer.png-e97bd4e3151f2b549fdecaa5a4270c08.ctex"]
 
 [params]
 

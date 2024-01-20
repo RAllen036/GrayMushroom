@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://7l2cdyrkf882"]
 
 [ext_resource type="Texture2D" uid="uid://6ubgp2l1ibks" path="res://Assets/Placeholder/Placeholder.png" id="1_kesue"]
-[ext_resource type="Script" path="res://Scenes/Player/playable_player.gd" id="1_m8ihb"]
+[ext_resource type="Script" path="res://Scripts/Player/playable_player.gd" id="1_m8ihb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oidif"]
 size = Vector2(16, 16)
@@ -33,3 +33,4 @@ libraries = {
 }
 
 [node name="Cam" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
