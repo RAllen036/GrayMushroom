@@ -8,6 +8,9 @@ var good = false
 var okay = false
 var current_note = null
 
+func _ready():
+	pass
+
 func _input(event):
 	if event.is_action_pressed(button,false):
 		if current_note != null:

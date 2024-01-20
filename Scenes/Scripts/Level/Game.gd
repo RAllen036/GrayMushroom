@@ -9,6 +9,7 @@ extends Node2D
 @onready var end_timer = $EndWait
 
 var measures = []
+var lane_pos = []
 
 var score = 0
 var combo = 0
@@ -19,7 +20,7 @@ var good = 0
 var okay = 0
 var missed = 0
 
-var bpm = 115
+var bpm = 100
 
 var song_position = 0.0
 var song_position_in_beats = 0
@@ -52,19 +53,9 @@ func song_finished():
 	Switch.scene(self, "res://Scenes/Levels/End.tscn")
 
 func spawn_notes(to_spawn):
-	if to_spawn > 0:
-		lane = randi() % 3
-		var instance = note.instantiate()
-		note_holder.add_child(instance)
-		instance.init(lane)
-	if to_spawn > 1:
-		while rand == lane:
-			rand = randi() % 3
-		lane = rand
-		var instance = note.instantiate()
-		note_holder.add_child(instance)
-		instance.init(lane)
-		
+	
+	#for item in lane_pos[to_spawn]
+	pass
 
 func increment_score(by):
 	if by > 0:
@@ -95,7 +86,6 @@ func reset_combo():
 	combo_label.text = ""
 
 func _on_conductor_measurex(pos):
-	print(spawn_beat[pos - 1])
 	spawn_notes(spawn_beat[pos - 1])
 
 # This function / signal thing is what controls the amount of buttons on the screen
@@ -146,10 +136,11 @@ func get_beat_layout():
 		new_content_list.append(temp_bool_list)
 		
 		if measure.size() == 4:
-			measures.append(measure)
+			measures.append([i, measure])
 			measure = []
+	lane_pos = new_content_list
 	#print(new_content_list)
-	print(measures)
+	#print(measures)
 	
 
 # Tells us when the song is finished and waits 3 seconds for anything on screen

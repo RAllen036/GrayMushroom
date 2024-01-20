@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dot63omjt4icn"]
+[gd_scene load_steps=8 format=3 uid="uid://dot63omjt4icn"]
 
 [ext_resource type="Script" path="res://Scenes/Scripts/Level/Button.gd" id="1_uj5ch"]
 [ext_resource type="Texture2D" uid="uid://6ubgp2l1ibks" path="res://Assets/Placeholder/Placeholder.png" id="2_y8n8v"]
+[ext_resource type="Texture2D" uid="uid://baglhr6mnf8vs" path="res://Assets/Placeholder/Placeholder1.png" id="3_hdevx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vwq64"]
 animations = [{
@@ -10,10 +11,10 @@ animations = [{
 "texture": ExtResource("2_y8n8v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_y8n8v")
+"texture": ExtResource("3_hdevx")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -31,8 +32,10 @@ script = ExtResource("1_uj5ch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vwq64")
+animation = &"new_animation"
 
 [node name="Push" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="Okay" type="Area2D" parent="."]
 
