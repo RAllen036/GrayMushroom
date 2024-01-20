@@ -69,10 +69,10 @@ offset_bottom = 124.0
 text = "perfect:"
 
 [node name="PerfectNumber" type="Label" parent="."]
-offset_left = 46.0
-offset_top = 104.0
-offset_right = 86.0
-offset_bottom = 127.0
+offset_left = 61.0
+offset_top = 103.0
+offset_right = 101.0
+offset_bottom = 126.0
 
 [node name="GoodLabel" type="Label" parent="."]
 offset_top = 127.0

@@ -3,10 +3,8 @@ extends Node2D
 # Used to get the sprite
 @export var note = "a"
 
-const TARGET_X = -164
-const SPAWN_X = 16
+const TARGET_X = -160
 const SPAWN_Y = 120
-const DIST_TO_TARGET = TARGET_X - SPAWN_X
 
 var speed: float = 100.0
 var hit: bool = false
@@ -18,19 +16,17 @@ func _physics_process(delta):
 			queue_free()
 			get_parent().get_parent().reset_combo()
 	else:
-		$Node2D.position.y += speed * delta
+		$Node2D.position.x += speed * delta
 
 func init(lane):
 	
-	if lane >= 0 and lane < 5:
-		$AnimatedSprite2D.frame = lane
-		position = Vector2(SPAWN_X, SPAWN_Y + 20 * lane)
-	
-	speed = DIST_TO_TARGET / 2.0
+	$AnimatedSprite2D.frame = lane
+	position = Vector2(0, SPAWN_Y + 20 * lane)
+	speed = TARGET_X / 2.0
 
 func destroy(score):
 	$CPUParticles2D.emitting = true
-	$AnimatedSprite.visible = false
+	$AnimatedSprite2D.hide()
 	$Timer.start()
 	hit = true
 	if score == 3:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyb7lmmrk5pp8"]
+[gd_scene load_steps=5 format=3 uid="uid://cyb7lmmrk5pp8"]
 
 [ext_resource type="Script" path="res://Scenes/Scripts/Level/Note.gd" id="1_66w4t"]
 [ext_resource type="Texture2D" uid="uid://6ubgp2l1ibks" path="res://Assets/Placeholder/Placeholder.png" id="2_v05yn"]
@@ -26,6 +26,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htiab"]
+size = Vector2(16, 16)
+
 [node name="Note" type="Node2D" groups=["note"]]
 script = ExtResource("1_66w4t")
 
@@ -45,3 +48,8 @@ emitting = false
 one_shot = true
 emission_shape = 1
 emission_sphere_radius = 4.2
+
+[node name="Area2D" type="Area2D" parent="." groups=["note"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["note"]]
+shape = SubResource("RectangleShape2D_htiab")

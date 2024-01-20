@@ -11,9 +11,6 @@ script = ExtResource("1_rfqai")
 [node name="Conductor" parent="." instance=ExtResource("2_eik3v")]
 stream = ExtResource("3_1c8w2")
 
-[node name="Notes" type="Node2D" parent="."]
-position = Vector2(536, 373)
-
 [node name="Panel" type="Panel" parent="."]
 offset_left = -505.0
 offset_top = 303.0
@@ -43,17 +40,6 @@ offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Button1" parent="." instance=ExtResource("4_un6us")]
-position = Vector2(202, 489)
-
-[node name="Button2" parent="." instance=ExtResource("4_un6us")]
-position = Vector2(202, 559)
-button = "b"
-
-[node name="Button3" parent="." instance=ExtResource("4_un6us")]
-position = Vector2(202, 628)
-button = "c"
-
 [node name="StartWait" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -62,8 +48,32 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="ButtonHolder" type="Node2D" parent="."]
+position = Vector2(370, 373)
+
+[node name="Button1" parent="ButtonHolder" instance=ExtResource("4_un6us")]
+position = Vector2(0, 120)
+
+[node name="Button2" parent="ButtonHolder" instance=ExtResource("4_un6us")]
+position = Vector2(0, 140)
+button = "s"
+
+[node name="Button3" parent="ButtonHolder" instance=ExtResource("4_un6us")]
+position = Vector2(0, 160)
+button = "d"
+
+[node name="Button4" parent="ButtonHolder" instance=ExtResource("4_un6us")]
+position = Vector2(0, 180)
+button = "f"
+
+[node name="Button5" parent="ButtonHolder" instance=ExtResource("4_un6us")]
+position = Vector2(0, 200)
+button = "space"
+
+[node name="Notes" type="Node2D" parent="."]
+position = Vector2(530, 373)
+
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
-[connection signal="measurex" from="Conductor" to="." method="_on_conductor_measurex"]
 [connection signal="timeout" from="StartWait" to="." method="_on_start_wait_timeout"]
 [connection signal="timeout" from="EndWait" to="." method="_on_end_wait_timeout"]

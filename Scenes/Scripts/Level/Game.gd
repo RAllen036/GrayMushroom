@@ -52,10 +52,15 @@ func song_finished():
 	Score.missed = missed
 	Switch.scene(self, "res://Scenes/Levels/End.tscn")
 
-func spawn_notes(to_spawn):
+func spawn_notes(pos):
 	
-	#for item in lane_pos[to_spawn]
-	pass
+	for i in range(0, lane_pos[pos].size() - 1):
+		if lane_pos[pos][i]:
+			var ins = note.instantiate()
+			note_holder.add_child(ins)
+			ins.init(i)
+			ins.add_to_group("note", true)
+	
 
 func increment_score(by):
 	if by > 0:
@@ -85,17 +90,9 @@ func reset_combo():
 	combo = 0
 	combo_label.text = ""
 
-func _on_conductor_measurex(pos):
-	spawn_notes(spawn_beat[pos - 1])
 
-# This function / signal thing is what controls the amount of buttons on the screen
-# This function needs to be editted to look through a 2d or dictionary that's contents ~~
-# ~~ are from a text file that someone has put timings in
 func _on_conductor_beat(pos):
-	song_position_in_beats = pos
-	for item in measures:
-		if song_position_in_beats > item[0]:
-			spawn_beat = item[1]
+	spawn_notes(pos)
 
 # x = song_pos_in_beats % 4 #### This will be when the pattern should start
 # x = song_pos_in_measure
@@ -113,7 +110,6 @@ func get_beat_layout():
 	# Get the Values as boolean and add to measure based on instruments playing
 	var new_content_list = []
 	var last_set = ["00000"]
-	var measure = []
 	
 	# Add comment on the absurdity below when able
 	
@@ -131,16 +127,10 @@ func get_beat_layout():
 			total += temp_int
 			temp_bool_list.append(bool(temp_int))
 		
-		measure.append(total)
-		
 		new_content_list.append(temp_bool_list)
 		
-		if measure.size() == 4:
-			measures.append([i, measure])
-			measure = []
 	lane_pos = new_content_list
-	#print(new_content_list)
-	#print(measures)
+	#print(lane_pos)
 	
 
 # Tells us when the song is finished and waits 3 seconds for anything on screen
@@ -149,7 +139,6 @@ func _on_conductor_finished():
 
 func _on_end_wait_timeout():
 	song_finished()
-
 
 func _on_start_wait_timeout():
 	conductor.play_with_beat_offset(8)
