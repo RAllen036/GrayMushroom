@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddhiqlrh0a527"
-path="res://.godot/imported/ShroomDrummer.png-e97bd4e3151f2b549fdecaa5a4270c08.ctex"
+uid="uid://bq2iwa23edlma"
+path="res://.godot/imported/opacity-gradient.png-03b19a827f2e6d61aee61a1616c7d94b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Friends/ShroomDrummer.png"
-dest_files=["res://.godot/imported/ShroomDrummer.png-e97bd4e3151f2b549fdecaa5a4270c08.ctex"]
+source_file="res://Assets/Shaders/opacity-gradient.png"
+dest_files=["res://.godot/imported/opacity-gradient.png-03b19a827f2e6d61aee61a1616c7d94b.ctex"]
 
 [params]
 

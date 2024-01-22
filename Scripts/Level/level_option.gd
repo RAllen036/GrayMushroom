@@ -6,8 +6,8 @@ signal selected(name: String, body:Node2D)
 
 var level_name: String
 
-func init(name: String):
-	level_name = name
+func init(lev_name: String):
+	level_name = lev_name
 
 func _on_area_2d_body_entered(body):
 	selected.emit(level_name, body)

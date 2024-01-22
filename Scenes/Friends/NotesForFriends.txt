@@ -1,0 +1,3 @@
+Make sure to use the animated sprite node instead of the sprite node
+This will make it easier to add in animations
+Which reminds me, don't forget to name the animation play or idle for good habits

@@ -8,5 +8,10 @@ func _physics_process(delta):
 	
 	velocity = walk_speed * direction
 	
+	if velocity.x > 0:
+		$AnimatedSprite2D.animation = "right"
+	if velocity.x < 0:
+		$AnimatedSprite2D.animation = "left"
+	
 	move_and_slide()
 	

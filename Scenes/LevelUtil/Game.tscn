@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://djyq8rg3knny4"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Game.gd" id="1_rfqai"]
-[ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/Levels/Conductor.tscn" id="2_eik3v"]
+[ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/LevelUtil/Conductor.tscn" id="2_eik3v"]
 [ext_resource type="AudioStream" uid="uid://b5u8h36teh5kw" path="res://Assets/Music/Grow.mp3" id="3_1c8w2"]
-[ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/Levels/button.tscn" id="4_un6us"]
+[ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/LevelUtil/button.tscn" id="4_un6us"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_rfqai")

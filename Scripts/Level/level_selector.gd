@@ -9,15 +9,9 @@ var option_buffer: float = 300
 # This function is only called once when the scene is initialised / instantiated
 func _ready():
 	
-	#var tween = get_tree().create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE)
-	#tween.tween_property($Player, "modulate", Color.RED, 1)
-	#tween.tween_property($Player, "scale", Vector2(), 1)
-	#tween.chain().tween_property($Player, "scale", Vector2(1, 1), 1)
-	#tween.chain().tween_property($Player, "modulate", Color.WHITE, 1)
-	
 	# Gets all the files in the Levels folder
-	# Removes all .gd files
-	# Remoevs the level selector
+	# Removes all files that aren't a scene
+	# Removes the level selector
 	# Because we only want the scenes that the player can travel to from here
 	
 	# Gets all the files in the Levels folder
@@ -27,7 +21,7 @@ func _ready():
 	# If index 0 is removed then index 1 of the original won't get read
 	for i in range(files.size() - 1, -1, -1): 
 		var file = files[i]
-		if file[-1] == "d" or file == "level_selector.tscn" or file == "level_option.tscn":
+		if file[-1] != "n" or file == "level_selector.tscn" or file == "level_option.tscn":
 			# Actually remove the file
 			files.remove_at(i)
 	
