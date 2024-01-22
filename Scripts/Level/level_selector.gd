@@ -45,3 +45,7 @@ func _on_option_selected(level_name, body):
 		# Changes the scene using custom scene changer found in res://Globals/switch_scenes.gd
 		Switch.scene(self, "res://Scenes/Levels/" + level_name)
 	
+
+func _input(event):
+	if Input.is_action_pressed("ui_cancel"):
+		Switch.scene(self, "res://Scenes/title_screen.tscn")

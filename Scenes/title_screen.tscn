@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx53xbia02j7"]
+[gd_scene load_steps=4 format=3 uid="uid://dx53xbia02j7"]
 
 [ext_resource type="Script" path="res://Scripts/Level/TitleScreen.gd" id="1_hohba"]
+[ext_resource type="Texture2D" uid="uid://br48c1h02h87g" path="res://Assets/Buttons/StartButton.png" id="2_05fex"]
+[ext_resource type="Texture2D" uid="uid://dljm4ieqpndwn" path="res://Assets/Buttons/PlayAgain.png" id="3_4dbu6"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -9,43 +11,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -155.0
-offset_top = -74.0
-offset_right = -59.0
-offset_bottom = -42.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3, 3)
-theme_override_font_sizes/font_size = 16
-text = "Start"
 script = ExtResource("1_hohba")
 
-[node name="QuitButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -155.0
-offset_top = 65.0
-offset_right = -59.0
-offset_bottom = 97.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3, 3)
-theme_override_font_sizes/font_size = 16
-text = "Quit
-"
-script = ExtResource("1_hohba")
+[node name="Start" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 247.0
+offset_right = 709.0
+offset_bottom = 346.0
+texture_normal = ExtResource("2_05fex")
+stretch_mode = 5
 
-[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
-[connection signal="pressed" from="QuitButton" to="StartButton" method="_on_quit_button_pressed"]
+[node name="PlayAgain" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 389.0
+offset_right = 715.0
+offset_bottom = 488.0
+texture_normal = ExtResource("3_4dbu6")
+stretch_mode = 5
+
+[connection signal="pressed" from="Start" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="PlayAgain" to="." method="_on_texture_button_2_pressed"]
