@@ -1,9 +1,80 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf28cm4kir0y8"]
+[gd_scene load_steps=4 format=3 uid="uid://bf28cm4kir0y8"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Game.gd" id="1_pb2dc"]
+[ext_resource type="Script" path="res://Scenes/Levels/level_3.gd" id="1_24uky"]
+[ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/LevelUtil/Conductor.tscn" id="2_iobx6"]
+[ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/LevelUtil/button.tscn" id="4_a0eoq"]
 
 [node name="Level3" type="Node2D"]
-script = ExtResource("1_pb2dc")
-beat_file_name = "Level3"
+script = ExtResource("1_24uky")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 6
+
+[node name="Conductor" parent="." instance=ExtResource("2_iobx6")]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 252.0
+offset_top = 66.0
+offset_right = 689.0
+offset_bottom = 322.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+
+[node name="Combo" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="StartWait" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="EndWait" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ButtonHolder" type="Node2D" parent="."]
+position = Vector2(430, 373)
+
+[node name="Button1" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
+position = Vector2(0, 120)
+
+[node name="Button2" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
+position = Vector2(0, 140)
+button = "s"
+
+[node name="Button3" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
+position = Vector2(0, 160)
+button = "d"
+
+[node name="Button4" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
+position = Vector2(0, 180)
+button = "f"
+
+[node name="Button5" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
+position = Vector2(0, 200)
+button = "space"
+
+[node name="Notes" type="Node2D" parent="."]
+position = Vector2(530, 373)
+
+[node name="Friends" type="Node2D" parent="."]
+position = Vector2(489, 327)

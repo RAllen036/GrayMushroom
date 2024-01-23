@@ -13,3 +13,10 @@ func _on_texture_button_pressed():
 # Play again button
 func _on_texture_button_2_pressed():
 	get_tree().quit()
+
+func _ready():
+	$Background.size = get_viewport_rect().size
+
+func _process(delta):
+	if get_viewport().size_changed:
+		$Background.size = get_viewport_rect().size

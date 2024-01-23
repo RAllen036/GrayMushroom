@@ -12,3 +12,7 @@ position = Vector2(576, 324)
 
 [node name="LevelOptions" type="Marker2D" parent="."]
 position = Vector2(122, 0)
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

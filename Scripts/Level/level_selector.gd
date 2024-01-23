@@ -9,6 +9,8 @@ var option_buffer: float = 300
 # This function is only called once when the scene is initialised / instantiated
 func _ready():
 	
+	$Background.size = get_viewport_rect().size
+	
 	# Gets all the files in the Levels folder
 	# Removes all files that aren't a scene
 	# Removes the level selector
@@ -49,3 +51,7 @@ func _on_option_selected(level_name, body):
 func _input(event):
 	if Input.is_action_pressed("ui_cancel"):
 		Switch.scene(self, "res://Scenes/title_screen.tscn")
+
+func _process(delta):
+	if get_viewport().size_changed:
+		$Background.size = get_viewport_rect().size
