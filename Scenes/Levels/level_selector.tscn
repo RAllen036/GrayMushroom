@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx5yj0dmt7p28"]
+[gd_scene load_steps=5 format=3 uid="uid://cx5yj0dmt7p28"]
 
 [ext_resource type="Script" path="res://Scripts/Level/level_selector.gd" id="1_khn25"]
 [ext_resource type="PackedScene" uid="uid://7l2cdyrkf882" path="res://Scenes/Player/playable_player.tscn" id="2_phj1b"]
+[ext_resource type="PackedScene" uid="uid://bal7j4dxjsfeo" path="res://Scenes/Useful/wall.tscn" id="3_fjh57"]
+[ext_resource type="Texture2D" uid="uid://bxfe8pqmwaems" path="res://Assets/LevelSelecetor/LevelSelectorBackgroundTemp.png" id="4_f2a87"]
 
 [node name="LevelSelector" type="Node2D"]
 top_level = true
@@ -11,8 +13,29 @@ script = ExtResource("1_khn25")
 position = Vector2(576, 324)
 
 [node name="LevelOptions" type="Marker2D" parent="."]
-position = Vector2(122, 0)
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Wall" parent="." instance=ExtResource("3_fjh57")]
+position = Vector2(1662, -390)
+scale = Vector2(22.24, 1)
+
+[node name="Wall2" parent="." instance=ExtResource("3_fjh57")]
+position = Vector2(-344, 161)
+scale = Vector2(1, 5.64)
+
+[node name="Wall3" parent="." instance=ExtResource("3_fjh57")]
+position = Vector2(1646, 709)
+scale = Vector2(22.36, 1)
+
+[node name="Wall4" parent="." instance=ExtResource("3_fjh57")]
+position = Vector2(3679, 174)
+scale = Vector2(1, 6.2)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-526, -487)
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("4_f2a87")
+centered = false

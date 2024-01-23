@@ -19,4 +19,6 @@ func _ready():
 
 func _process(delta):
 	if get_viewport().size_changed:
-		$Background.size = get_viewport_rect().size
+		var view: Vector2 = get_viewport_rect().size
+		$Background.size = view
+		
