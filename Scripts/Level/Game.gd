@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var note = preload("res://Scenes/Levels/Note.tscn")
-@onready var end_screen = preload("res://Scenes/Levels/End.tscn")
+@onready var note = preload("res://Scenes/LevelUtil/Note.tscn")
+@onready var end_screen = preload("res://Scenes/LevelUtil/End.tscn")
 @onready var note_holder = $Notes
 @onready var label = $Panel/Label
 @onready var combo_label = $Panel/Combo

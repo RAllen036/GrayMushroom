@@ -1,6 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bf28cm4kir0y8"]
 
-[ext_resource type="Script" path="res://Scripts/Level/level_3.gd" id="1_id5i2"]
+[ext_resource type="Script" path="res://Scripts/Level/Game.gd" id="1_pb2dc"]
 
 [node name="Level3" type="Node2D"]
-script = ExtResource("1_id5i2")
+script = ExtResource("1_pb2dc")
+beat_file_name = "Level3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
