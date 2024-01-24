@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var grayed_area = $GrayedArea
+@onready var grayed_area = $GrayGradient
 
 # Remove the blue border
 func _ready():

@@ -3,12 +3,11 @@
 [ext_resource type="Shader" path="res://Shaders/gray_scale.gdshader" id="1_4xlr2"]
 [ext_resource type="Script" path="res://Scripts/Shaders/gray_scale.gd" id="1_58anu"]
 [ext_resource type="Texture2D" uid="uid://bv06ktjqhbxfu" path="res://Assets/Shaders/BasicBlueBorder.png" id="2_qytob"]
+[ext_resource type="Texture2D" uid="uid://bq2iwa23edlma" path="res://Assets/Shaders/opacity-gradient.png" id="5_l3ulk"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_028if"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxg2o"]
 shader = ExtResource("1_4xlr2")
 shader_parameter/mixer = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_2ejda"]
 
 [node name="GrayScale" type="Node2D"]
 script = ExtResource("1_58anu")
@@ -17,7 +16,7 @@ script = ExtResource("1_58anu")
 scale = Vector2(1.52941, 1.52941)
 texture = ExtResource("2_qytob")
 
-[node name="GrayedArea" type="MeshInstance2D" parent="."]
-material = SubResource("ShaderMaterial_028if")
-scale = Vector2(49, 49)
-mesh = SubResource("BoxMesh_2ejda")
+[node name="GrayGradient" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qxg2o")
+scale = Vector2(1.52941, 1.52941)
+texture = ExtResource("5_l3ulk")

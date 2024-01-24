@@ -5,3 +5,6 @@ Credits got to:
 	ryster (Person with to much free time)
 	Deku (Lead Game Designer)
 (Discord names)
+
+Extra's:
+	Xel_Free_Controller&Key_Prompts (For the key prompts in Assets>Buttons>Keys)
