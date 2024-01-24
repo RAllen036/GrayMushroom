@@ -47,5 +47,7 @@ size_flags_vertical = 8
 texture_normal = ExtResource("3_4dbu6")
 stretch_mode = 5
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="Background/AspectRatioContainer/Start" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Background/AspectRatioContainer/PlayAgain" to="." method="_on_texture_button_2_pressed"]
