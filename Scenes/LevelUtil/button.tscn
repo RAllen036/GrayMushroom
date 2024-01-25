@@ -1,17 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://dot63omjt4icn"]
+[gd_scene load_steps=11 format=3 uid="uid://dot63omjt4icn"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Button.gd" id="1_uj5ch"]
-[ext_resource type="Texture2D" uid="uid://6ubgp2l1ibks" path="res://Assets/Placeholder/Placeholder.png" id="2_y8n8v"]
-[ext_resource type="Texture2D" uid="uid://baglhr6mnf8vs" path="res://Assets/Placeholder/Placeholder1.png" id="3_hdevx"]
+[ext_resource type="Texture2D" uid="uid://sip6aoas482b" path="res://Assets/Buttons/Keys/A_Key_Light.png" id="2_ptik1"]
+[ext_resource type="Texture2D" uid="uid://0n755pi1ovf5" path="res://Assets/Buttons/Keys/S_Key_Light.png" id="3_r6brd"]
+[ext_resource type="Texture2D" uid="uid://bdbuf3arwqwj" path="res://Assets/Buttons/Keys/D_Key_Light.png" id="4_7jjbm"]
+[ext_resource type="Texture2D" uid="uid://nqv80kcydhcc" path="res://Assets/Buttons/Keys/F_Key_Light.png" id="5_lnkqs"]
+[ext_resource type="Texture2D" uid="uid://bf4rib7grgby3" path="res://Assets/Buttons/Keys/Space_Key_Light.png" id="6_t13gi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vwq64"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_y8n8v")
+"texture": ExtResource("2_ptik1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_hdevx")
+"texture": ExtResource("3_r6brd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7jjbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lnkqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t13gi")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -19,40 +31,40 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m11fj"]
-size = Vector2(16, 16)
+size = Vector2(62, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80okv"]
-size = Vector2(10, 16)
+size = Vector2(42, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scf8m"]
-size = Vector2(4, 16)
+size = Vector2(22, 25)
 
 [node name="Button" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_uj5ch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vwq64")
 animation = &"new_animation"
 
-[node name="Push" type="Timer" parent="."]
-wait_time = 0.5
-
 [node name="Okay" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Okay"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_m11fj")
 
 [node name="Good" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Good"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_80okv")
 
 [node name="Perfect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Perfect"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_scf8m")
 
-[connection signal="timeout" from="Push" to="." method="_on_push_timeout"]
 [connection signal="area_entered" from="Okay" to="." method="_on_okay_area_entered"]
 [connection signal="area_exited" from="Okay" to="." method="_on_okay_area_exited"]
 [connection signal="area_entered" from="Good" to="." method="_on_good_area_entered"]

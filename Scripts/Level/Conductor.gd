@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-var bpm: int = 100
+var bpm: int = 240
 
 # Tracking the beat and song position
 var song_position: float = 0.0
@@ -15,9 +15,6 @@ var closest = 0
 var time_off_beat = 0.0
 
 signal beat(pos)
-
-func _ready():
-	sec_per_beat = 60.0 / bpm
 
 func _physics_process(delta):
 	if is_playing():
@@ -34,7 +31,7 @@ func report_beat():
 func play_song():
 	play()
 
-func play_with_beat_offset(num):
+func play_with_beat_offset(num: int = 1):
 	beats_before_start = num
 	$StartTimer.wait_time = sec_per_beat
 	$StartTimer.start()

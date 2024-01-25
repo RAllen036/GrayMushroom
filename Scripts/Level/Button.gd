@@ -3,10 +3,14 @@ extends Node2D
 @onready var sprite = $AnimatedSprite2D
 @export var button: String = "a"
 
+var frames = {"a":0, "s":1, "d":2, "f":3, "space":4}
 var perfect = false
 var good = false
 var okay = false
 var current_note = null
+
+func _ready():
+	sprite.frame = frames[button]
 
 func _input(event):
 	if event.is_action_pressed(button,false):
@@ -24,14 +28,14 @@ func _input(event):
 		else:
 			get_parent().get_parent().increment_score(0)
 	if event.is_action_pressed(button):
-		$AnimatedSprite2D.frame = 1
+		# Do some animation with modulate
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "modulate", Color.GREEN, 0.1)
 	elif event.is_action_released(button):
-		$Push.start()
-		
+		# undo animation
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	
-
-func _on_push_timeout():
-	$AnimatedSprite2D.frame = 0
 
 func reset():
 	current_note = null

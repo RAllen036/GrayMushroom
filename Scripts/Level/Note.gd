@@ -3,16 +3,14 @@ extends Node2D
 # Used to get the sprite
 @export var note = "a"
 
-const TARGET_X = -160
-const SPAWN_Y = 120
-
-var speed: float = 100.0
+var distance_per_beat = -200
+var speed: float
 var hit: bool = false
 
 func _physics_process(delta):
 	if !hit:
 		position.x += speed * delta
-		if position.x < -200:
+		if position.x < distance_per_beat * 3:
 			queue_free()
 			get_parent().get_parent().reset_combo()
 	else:
@@ -24,8 +22,23 @@ func _physics_process(delta):
 
 func init(lane):
 	$AnimatedSprite2D.frame = lane
-	position = Vector2(0, SPAWN_Y + 20 * lane)
-	speed = TARGET_X / 2.0
+	# BPM of 120 and 60 seconds in a min
+	var bps: float = 60.0 / 120.0
+	# Speed required to get from a pos of 0 to x in 1 beat
+	speed = distance_per_beat / bps
+	
+	match lane:
+		0:
+			position = Vector2(0, 56)
+		1:
+			position = Vector2(0, 94)
+		2:
+			position = Vector2(0, 132)
+		3:
+			position = Vector2(0, 170)
+		4:
+			position = Vector2(0, 208)
+	
 
 func destroy(score):
 	$CPUParticles2D.emitting = true
