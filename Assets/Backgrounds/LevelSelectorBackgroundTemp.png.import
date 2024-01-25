@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxfe8pqmwaems"
-path="res://.godot/imported/LevelSelectorBackgroundTemp.png-29bcccb8acbc60327b3e5226b899903f.ctex"
+path="res://.godot/imported/LevelSelectorBackgroundTemp.png-dfbbffb86793cf5a0de41547f0cf7c36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/LevelSelecetor/LevelSelectorBackgroundTemp.png"
-dest_files=["res://.godot/imported/LevelSelectorBackgroundTemp.png-29bcccb8acbc60327b3e5226b899903f.ctex"]
+source_file="res://Assets/Backgrounds/LevelSelectorBackgroundTemp.png"
+dest_files=["res://.godot/imported/LevelSelectorBackgroundTemp.png-dfbbffb86793cf5a0de41547f0cf7c36.ctex"]
 
 [params]
 

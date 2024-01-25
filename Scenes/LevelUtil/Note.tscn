@@ -1,25 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyb7lmmrk5pp8"]
+[gd_scene load_steps=9 format=3 uid="uid://cyb7lmmrk5pp8"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Note.gd" id="1_a8lpm"]
-[ext_resource type="Texture2D" uid="uid://6ubgp2l1ibks" path="res://Assets/Placeholder/Placeholder.png" id="2_v05yn"]
+[ext_resource type="Texture2D" uid="uid://sip6aoas482b" path="res://Assets/Buttons/Keys/A_Key_Light.png" id="2_2s6ve"]
+[ext_resource type="Texture2D" uid="uid://0n755pi1ovf5" path="res://Assets/Buttons/Keys/S_Key_Light.png" id="3_vuy6h"]
+[ext_resource type="Texture2D" uid="uid://bdbuf3arwqwj" path="res://Assets/Buttons/Keys/D_Key_Light.png" id="4_c7ys1"]
+[ext_resource type="Texture2D" uid="uid://nqv80kcydhcc" path="res://Assets/Buttons/Keys/F_Key_Light.png" id="5_ur0ru"]
+[ext_resource type="Texture2D" uid="uid://bf4rib7grgby3" path="res://Assets/Buttons/Keys/Space_Key_Light.png" id="6_hc8fg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eupam"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v05yn")
+"texture": ExtResource("2_2s6ve")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_v05yn")
+"texture": ExtResource("3_vuy6h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_v05yn")
+"texture": ExtResource("4_c7ys1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_v05yn")
+"texture": ExtResource("5_ur0ru")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_v05yn")
+"texture": ExtResource("6_hc8fg")
 }],
 "loop": true,
 "name": &"default",
@@ -39,6 +43,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_eupam")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Level/level_selector.gd" id="1_khn25"]
 [ext_resource type="PackedScene" uid="uid://7l2cdyrkf882" path="res://Scenes/Player/playable_player.tscn" id="2_phj1b"]
 [ext_resource type="PackedScene" uid="uid://bal7j4dxjsfeo" path="res://Scenes/Useful/wall.tscn" id="3_fjh57"]
-[ext_resource type="Texture2D" uid="uid://bxfe8pqmwaems" path="res://Assets/LevelSelecetor/LevelSelectorBackgroundTemp.png" id="4_f2a87"]
+[ext_resource type="Texture2D" uid="uid://bxfe8pqmwaems" path="res://Assets/Backgrounds/LevelSelectorBackgroundTemp.png" id="4_f2a87"]
 
 [node name="LevelSelector" type="Node2D"]
 top_level = true

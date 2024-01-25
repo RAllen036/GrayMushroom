@@ -13,10 +13,10 @@ shader_parameter/mixer = 1.0
 script = ExtResource("1_58anu")
 
 [node name="Border" type="Sprite2D" parent="."]
-scale = Vector2(1.52941, 1.52941)
+scale = Vector2(0.016, 0.016)
 texture = ExtResource("2_qytob")
 
 [node name="GrayGradient" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qxg2o")
-scale = Vector2(1.52941, 1.52941)
+scale = Vector2(0.016, 0.016)
 texture = ExtResource("5_l3ulk")

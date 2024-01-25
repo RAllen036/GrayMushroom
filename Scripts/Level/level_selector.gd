@@ -9,7 +9,7 @@ var option_buffer: float = 300
 # This function is only called once when the scene is initialised / instantiated
 func _ready():
 	
-	$Background.size = get_viewport_rect().size
+	BackMusic.play()
 	
 	# Gets all the files in the Levels folder
 	# Removes all files that aren't a scene
@@ -21,7 +21,7 @@ func _ready():
 	
 	# Loops backwards so that you don't miss a file
 	# If index 0 is removed then index 1 of the original won't get read
-	for i in range(files.size() - 1, -1, -1): 
+	for i in range(files.size() - 1, -1, -1):
 		var file = files[i]
 		if file[-1] != "n" or file == "level_selector.tscn" or file == "level_option.tscn":
 			# Actually remove the file
@@ -44,6 +44,8 @@ func _ready():
 func _on_option_selected(level_name, body):
 	# Checks to see if the body that entered is the player
 	if body.is_in_group("player"):
+		# Turn off background music / get rid of audio stream since it will not be in use
+		BackMusic.stop()
 		# Changes the scene using custom scene changer found in res://Globals/switch_scenes.gd
 		Switch.scene(self, "res://Scenes/Levels/" + level_name)
 	
@@ -51,7 +53,3 @@ func _on_option_selected(level_name, body):
 func _input(event):
 	if Input.is_action_pressed("ui_cancel"):
 		Switch.scene(self, "res://Scenes/title_screen.tscn")
-
-func _process(delta):
-	if get_viewport().size_changed:
-		$Background.size = get_viewport_rect().size

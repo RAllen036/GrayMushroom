@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfj1k11l2f3nu"]
+[gd_scene load_steps=5 format=3 uid="uid://cfj1k11l2f3nu"]
 
 [ext_resource type="Script" path="res://Scripts/Level/level_option.gd" id="1_1edfl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u3s4h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rj1o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3wn1h"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="LevelOption" type="Node2D"]
 script = ExtResource("1_1edfl")
@@ -21,5 +24,14 @@ mesh = SubResource("CapsuleMesh_u3s4h")
 rotation = 1.5708
 scale = Vector2(5, 5)
 shape = SubResource("CapsuleShape2D_2rj1o")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -59.0
+offset_top = -34.0
+offset_right = 53.0
+offset_bottom = 34.0
+label_settings = SubResource("LabelSettings_3wn1h")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

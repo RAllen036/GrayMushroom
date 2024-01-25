@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Switch="*res://Globals/switch_scenes.gd"
 Score="*res://Globals/Score.gd"
+BackMusic="*res://Globals/background_noise.gd"
 
 [dotnet]
 

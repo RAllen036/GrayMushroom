@@ -7,6 +7,7 @@
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_24uky")
+beat_file_name = "Level_3"
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0

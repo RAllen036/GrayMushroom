@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx53xbia02j7"]
+[gd_scene load_steps=7 format=3 uid="uid://dx53xbia02j7"]
 
 [ext_resource type="Script" path="res://Scripts/Level/TitleScreen.gd" id="1_hohba"]
-[ext_resource type="Texture2D" uid="uid://c73g3mxfxe4of" path="res://Assets/Levels/TitleScreen.png" id="2_2b3iy"]
 [ext_resource type="Texture2D" uid="uid://br48c1h02h87g" path="res://Assets/Buttons/StartButton.png" id="2_05fex"]
+[ext_resource type="Texture2D" uid="uid://c73g3mxfxe4of" path="res://Assets/Backgrounds/TitleScreen.png" id="2_ee6un"]
 [ext_resource type="Texture2D" uid="uid://dljm4ieqpndwn" path="res://Assets/Buttons/PlayAgain.png" id="3_4dbu6"]
+[ext_resource type="PackedScene" uid="uid://cg5u2xrwxlye6" path="res://Scenes/Useful/gray_scale.tscn" id="5_b3vgt"]
+[ext_resource type="Texture2D" uid="uid://bvhyihr3cvg0t" path="res://Assets/Backgrounds/MMRR.png" id="5_l0ai1"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -18,7 +20,7 @@ script = ExtResource("1_hohba")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_2b3iy")
+texture = ExtResource("2_ee6un")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Background"]
 layout_mode = 1
@@ -47,7 +49,18 @@ size_flags_vertical = 8
 texture_normal = ExtResource("3_4dbu6")
 stretch_mode = 5
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="GrayScale" parent="Background" instance=ExtResource("5_b3vgt")]
+
+[node name="FadeIn" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="FadeInImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_l0ai1")
 
 [connection signal="pressed" from="Background/AspectRatioContainer/Start" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Background/AspectRatioContainer/PlayAgain" to="." method="_on_texture_button_2_pressed"]
+[connection signal="timeout" from="FadeIn" to="." method="_on_fade_in_timeout"]
