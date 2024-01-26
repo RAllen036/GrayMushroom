@@ -3,6 +3,7 @@ extends Control
 @onready var gray = $Background/GrayScale
 
 var fade: bool = false
+var jam_back: bool = false
 
 func _on_quit_button_pressed():
 	get_tree().quit()
@@ -27,9 +28,11 @@ func _ready():
 	var view = get_viewport_rect().size
 	gray.scale = view
 	gray.position = Vector2(view.x / 2, view.y / 2)
+	$Info/JamBackground.global_position = Vector2.ZERO
 	$Background.size = view
 	$Background.hide()
 	$FadeInImage.size = view
+	$Info/JamBackground.size = view
 	$FadeIn.start()
 
 func _process(delta):
@@ -44,6 +47,7 @@ func _process(delta):
 		gray.position = Vector2(view.x / 2, view.y / 2)
 		$Background.size = view
 		$FadeInImage.size = view
+		$Info/JamBackground.size = view
 		
 
 func _on_fade_in_timeout():
@@ -51,4 +55,11 @@ func _on_fade_in_timeout():
 	$FadeInImage.hide()
 	$Background.show()
 
-
+func _on_info_pressed():
+	$Background.hide()
+	$Info/JamBackground.hide()
+	if jam_back:
+		$Background.show()
+	else:
+		$Info/JamBackground.show()
+	jam_back = not jam_back

@@ -76,7 +76,7 @@ animations = [{
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_24uky")
 beat_file_name = "Level_3"
-bpm = 260
+bpm = 130
 
 [node name="SizedBackground" type="ColorRect" parent="."]
 anchors_preset = 15

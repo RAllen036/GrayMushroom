@@ -8,7 +8,6 @@ func _ready():
 	$GoodNumber.text = str(Score.good)
 	$OkayNumber.text = str(Score.okay)
 	$MissedNumber.text = str(Score.missed)
-	
 
 func _on_back_to_menu_pressed():
 	Switch.scene(get_parent(), "res://Scenes/Levels/level_selector.tscn")

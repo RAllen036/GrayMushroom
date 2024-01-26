@@ -8,8 +8,8 @@ func _physics_process(delta):
 	if !hit:
 		position.x += speed * delta
 		if position.x < distance_per_beat * 3:
+			get_parent().get_parent().increment_score(0)
 			queue_free()
-			get_parent().get_parent().reset_combo()
 	else:
 		$Node2D.position.x += speed * delta
 		var tween = get_tree().create_tween()

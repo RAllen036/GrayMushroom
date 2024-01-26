@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx53xbia02j7"]
+[gd_scene load_steps=9 format=3 uid="uid://dx53xbia02j7"]
 
 [ext_resource type="Script" path="res://Scripts/Level/TitleScreen.gd" id="1_hohba"]
 [ext_resource type="Texture2D" uid="uid://br48c1h02h87g" path="res://Assets/Buttons/StartButton.png" id="2_05fex"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c7ei1pfum23yb" path="res://Assets/Buttons/Quit.png" id="4_w60e7"]
 [ext_resource type="PackedScene" uid="uid://cg5u2xrwxlye6" path="res://Scenes/Useful/gray_scale.tscn" id="5_b3vgt"]
 [ext_resource type="Texture2D" uid="uid://bvhyihr3cvg0t" path="res://Assets/Backgrounds/MMRR.png" id="5_l0ai1"]
+[ext_resource type="Texture2D" uid="uid://dxrgokxgpc2tt" path="res://Assets/Buttons/Info.png" id="6_qng1x"]
+[ext_resource type="Texture2D" uid="uid://dlxhc7f7tkex8" path="res://Assets/Backgrounds/GameJam.png" id="7_17bu8"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -52,6 +54,25 @@ stretch_mode = 5
 [node name="GrayScale" parent="Background" instance=ExtResource("5_b3vgt")]
 mix = 0.65
 
+[node name="Info" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+texture_normal = ExtResource("6_qng1x")
+
+[node name="JamBackground" type="TextureRect" parent="Info"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("7_17bu8")
+expand_mode = 1
+
 [node name="FadeIn" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -64,4 +85,5 @@ texture = ExtResource("5_l0ai1")
 
 [connection signal="pressed" from="Background/AspectRatioContainer/Start" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Background/AspectRatioContainer/Quit" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Info" to="." method="_on_info_pressed"]
 [connection signal="timeout" from="FadeIn" to="." method="_on_fade_in_timeout"]

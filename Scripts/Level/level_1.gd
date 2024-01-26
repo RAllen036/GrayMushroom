@@ -33,6 +33,8 @@ var rand = 0
 
 var finished: bool = false
 
+var played_notes: int = 0
+
 func _ready():
 	
 	back.size = get_viewport_rect().size
@@ -52,12 +54,13 @@ func _input(event):
 func song_finished():
 	if conductor.playing == true:
 		conductor.stop()
-	Score.set_score(score)
 	Score.combo = max_combo
 	Score.great = great
 	Score.good = good
 	Score.okay = okay
 	Score.missed = missed
+	Score.total_notes = played_notes
+	Score.eval_grade()
 	var end = end_screen.instantiate()
 	add_child(end)
 
@@ -66,6 +69,7 @@ func spawn_notes(pos):
 	if pos < lane_pos.size():
 		for i in range(0, lane_pos[pos].size()):
 			if lane_pos[pos][i]:
+				played_notes += 1
 				var ins = note.instantiate()
 				note_holder.add_child(ins)
 				ins.init(i, (bpm / 2))
@@ -94,15 +98,10 @@ func increment_score(by):
 		if combo > max_combo:
 			max_combo = combo
 	else:
-		combo_label.text = ""
-
-func reset_combo():
-	combo = 0
-	combo_label.text = ""
+		combo_label.text = "combo!"
 
 func _on_conductor_beat(pos):
 	spawn_notes(pos)
-	print(pos + 1)
 	if $Friends/Birdo.frame == 0:
 		$Friends/Birdo.frame = 1
 	else:
