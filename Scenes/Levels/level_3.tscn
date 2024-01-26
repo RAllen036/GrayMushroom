@@ -1,13 +1,89 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf28cm4kir0y8"]
+[gd_scene load_steps=17 format=3 uid="uid://bf28cm4kir0y8"]
 
 [ext_resource type="Script" path="res://Scripts/Level/level_3.gd" id="1_24uky"]
 [ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/LevelUtil/Conductor.tscn" id="2_iobx6"]
+[ext_resource type="AudioStream" uid="uid://dqc32o1nydlw1" path="res://Assets/Music/Song3True.mp3" id="3_kuyp0"]
 [ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/LevelUtil/button.tscn" id="4_a0eoq"]
-[ext_resource type="AudioStream" uid="uid://b5u8h36teh5kw" path="res://Assets/Music/Grow.mp3" id="4_h3ete"]
+[ext_resource type="Texture2D" uid="uid://dxs3nh77ctn3c" path="res://Assets/Friends/Birdo1.png" id="5_04edy"]
+[ext_resource type="Texture2D" uid="uid://0lo014guyhxr" path="res://Assets/Friends/Birdo2.png" id="6_yr6b1"]
+[ext_resource type="Texture2D" uid="uid://gh7c75x3q2lm" path="res://Assets/Friends/ShroomDrummer.png" id="7_pkun0"]
+[ext_resource type="Texture2D" uid="uid://cn2tsj7ijf4eo" path="res://Assets/Friends/ShroomFlute.png" id="8_5omw0"]
+[ext_resource type="Texture2D" uid="uid://dchyp6we4cm3o" path="res://Assets/Friends/ShroomDrum.png" id="9_u57a5"]
+[ext_resource type="Texture2D" uid="uid://crynm7uk1ut15" path="res://Assets/Friends/LilDoodRight.png" id="10_nvgdg"]
+[ext_resource type="Texture2D" uid="uid://cedti5qvwky11" path="res://Assets/Friends/LilDoodLeft.png" id="11_pnp3q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5j6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_04edy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yr6b1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cb3ya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pkun0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4ts5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5omw0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txv7o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_u57a5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7s7ho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_nvgdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pnp3q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_24uky")
 beat_file_name = "Level_3"
+bpm = 260
+
+[node name="SizedBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -15,55 +91,76 @@ offset_bottom = 40.0
 stretch_mode = 6
 
 [node name="Conductor" parent="." instance=ExtResource("2_iobx6")]
-stream = ExtResource("4_h3ete")
+stream = ExtResource("3_kuyp0")
+bpm = 260
 
 [node name="StartWait" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [node name="EndWait" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 82.0
+offset_top = 59.0
+offset_right = 752.0
+offset_bottom = 266.0
+
 [node name="ButtonHolder" type="Node2D" parent="."]
-position = Vector2(430, 373)
+position = Vector2(416, 29)
 
 [node name="Button1" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
-position = Vector2(0, 120)
+position = Vector2(0, 56)
 
 [node name="Button2" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
-position = Vector2(0, 140)
+position = Vector2(0, 94)
 button = "s"
 
 [node name="Button3" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
-position = Vector2(0, 160)
+position = Vector2(0, 132)
 button = "d"
 
 [node name="Button4" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
-position = Vector2(0, 180)
+position = Vector2(0, 170)
 button = "f"
 
 [node name="Button5" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
-position = Vector2(0, 200)
+position = Vector2(0, 208)
 button = "space"
 
 [node name="Notes" type="Node2D" parent="."]
-position = Vector2(530, 373)
+position = Vector2(716, 29)
 
 [node name="Friends" type="Node2D" parent="."]
-position = Vector2(484, 264)
+position = Vector2(495, 502)
 
-[node name="Panel2" type="Panel" parent="."]
-offset_left = 252.0
-offset_top = 445.0
-offset_right = 590.0
-offset_bottom = 622.0
+[node name="Birdo" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(28, 95)
+sprite_frames = SubResource("SpriteFrames_c5j6w")
+
+[node name="Drummer" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(-73, -48)
+sprite_frames = SubResource("SpriteFrames_cb3ya")
+
+[node name="Flute" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(-124, 56)
+sprite_frames = SubResource("SpriteFrames_s4ts5")
+
+[node name="Cymbal" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(86, -58)
+sprite_frames = SubResource("SpriteFrames_txv7o")
+
+[node name="Player" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(222, 34)
+sprite_frames = SubResource("SpriteFrames_7s7ho")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 495.0
-offset_bottom = 124.0
+offset_left = 809.0
+offset_top = 124.0
+offset_right = 1142.0
+offset_bottom = 210.0
+scale = Vector2(0.639999, 1)
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
@@ -72,7 +169,6 @@ anchor_right = 1.0
 offset_bottom = 29.0
 grow_horizontal = 2
 text = "Score:"
-horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
@@ -86,6 +182,10 @@ offset_top = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Combo!"
-horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
+[connection signal="timeout" from="StartWait" to="." method="_on_start_wait_timeout"]
+[connection signal="timeout" from="EndWait" to="." method="_on_end_wait_timeout"]

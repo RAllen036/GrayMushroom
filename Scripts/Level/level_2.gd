@@ -8,6 +8,7 @@ extends Node2D
 @onready var conductor = $Conductor
 @onready var start_timer = $StartWait
 @onready var end_timer = $EndWait
+@onready var back = $SizedBackground
 
 @export var beat_file_name = "Game"
 
@@ -23,12 +24,7 @@ var good = 0
 var okay = 0
 var missed = 0
 
-var bpm = 100
-
-var song_position = 0.0
-var song_position_in_beats = 0
-var last_spawned_beat = 0
-var sec_per_beat = 60.0 / bpm
+@export var bpm = 240
 
 var spawn_beat = [1, 1, 1, 1]
 
@@ -39,16 +35,15 @@ var finished: bool = false
 
 func _ready():
 	
-	$Background.size = get_viewport_rect().size
+	back.size = get_viewport_rect().size
 	
 	get_beat_layout()
 	randomize()
-	conductor.play_with_beat_offset(8)
+	conductor.play_with_beat_offset(2)
 
 func _process(delta):
 	if get_viewport().size_changed:
-		$Background.size = get_viewport_rect().size
-	
+		back.size = get_viewport_rect().size
 
 func _input(event):
 	if Input.is_action_pressed("ui_cancel"):
@@ -73,7 +68,7 @@ func spawn_notes(pos):
 			if lane_pos[pos][i]:
 				var ins = note.instantiate()
 				note_holder.add_child(ins)
-				ins.init(i)
+				ins.init(i, (bpm / 2))
 				ins.add_to_group("note", true)
 	
 
@@ -107,8 +102,15 @@ func reset_combo():
 
 
 func _on_conductor_beat(pos):
-	spawn_notes(pos)
-
+	spawn_notes(pos + 2)
+	if $Friends/Birdo.frame == 0:
+		$Friends/Birdo.frame = 1
+	else:
+		$Friends/Birdo.frame = 0
+	if $Friends/Player.frame == 0:
+		$Friends/Player.frame = 1
+	else:
+		$Friends/Player.frame = 0
 
 func get_beat_layout():
 	# Read file
@@ -154,4 +156,5 @@ func _on_end_wait_timeout():
 	song_finished()
 
 func _on_start_wait_timeout():
-	conductor.play_with_beat_offset(8)
+	conductor.play_with_beat_offset(2)
+

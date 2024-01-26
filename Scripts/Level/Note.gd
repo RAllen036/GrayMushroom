@@ -1,8 +1,5 @@
 extends Node2D
 
-# Used to get the sprite
-@export var note = "a"
-
 var distance_per_beat = -200
 var speed: float
 var hit: bool = false
@@ -20,10 +17,10 @@ func _physics_process(delta):
 		if $Node2D.scale <= Vector2(0.2, 0.2):
 			queue_free()
 
-func init(lane):
+func init(lane, bpm):
 	$AnimatedSprite2D.frame = lane
 	# BPM of 120 and 60 seconds in a min
-	var bps: float = 60.0 / 120.0
+	var bps: float = 60.0 / bpm
 	# Speed required to get from a pos of 0 to x in 1 beat
 	speed = distance_per_beat / bps
 	
