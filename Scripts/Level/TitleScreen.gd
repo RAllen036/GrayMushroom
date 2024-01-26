@@ -19,22 +19,6 @@ func _on_texture_button_pressed():
 func _on_texture_button_2_pressed():
 	get_tree().quit()
 
-func _ready():
-	
-	# Start background music
-	BackMusic.play()
-	
-	# Splash screen stuff
-	var view = get_viewport_rect().size
-	gray.scale = view
-	gray.position = Vector2(view.x / 2, view.y / 2)
-	$Info/JamBackground.global_position = Vector2.ZERO
-	$Background.size = view
-	$Background.hide()
-	$FadeInImage.size = view
-	$Info/JamBackground.size = view
-	$FadeIn.start()
-
 func _process(delta):
 	
 	if fade:
@@ -63,3 +47,18 @@ func _on_info_pressed():
 	else:
 		$Info/JamBackground.show()
 	jam_back = not jam_back
+
+
+func _on_ready():
+	# Start background music
+	BackMusic.play()
+	
+	# Splash screen stuff
+	var view = get_viewport_rect().size
+	gray.scale = view
+	gray.position = Vector2(view.x / 2, view.y / 2)
+	$Info/JamBackground.global_position = Vector2.ZERO
+	$Background.size = view
+	$Background.hide()
+	$FadeInImage.size = view
+	$Info/JamBackground.size = view

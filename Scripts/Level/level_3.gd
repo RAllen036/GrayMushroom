@@ -33,17 +33,21 @@ var rand = 0
 
 var finished: bool = false
 
+var played_notes: float = 0
+var total_notes: float = 0
+
 func _ready():
-	
 	back.size = get_viewport_rect().size
-	
+	$GraySquare.re_size(get_viewport_rect().size)
 	get_beat_layout()
 	randomize()
 	conductor.play_with_beat_offset(2)
 
 func _process(delta):
+	$GraySquare.set_mixer(1 - ((played_notes-missed)/total_notes))
 	if get_viewport().size_changed:
 		back.size = get_viewport_rect().size
+		$GraySquare.re_size(get_viewport_rect().size)
 
 func _input(event):
 	if Input.is_action_pressed("ui_cancel"):
@@ -52,12 +56,13 @@ func _input(event):
 func song_finished():
 	if conductor.playing == true:
 		conductor.stop()
-	Score.set_score(score)
 	Score.combo = max_combo
 	Score.great = great
 	Score.good = good
 	Score.okay = okay
 	Score.missed = missed
+	Score.total_notes = played_notes
+	Score.eval_grade()
 	var end = end_screen.instantiate()
 	add_child(end)
 
@@ -66,6 +71,7 @@ func spawn_notes(pos):
 	if pos < lane_pos.size():
 		for i in range(0, lane_pos[pos].size()):
 			if lane_pos[pos][i]:
+				played_notes += 1
 				var ins = note.instantiate()
 				note_holder.add_child(ins)
 				ins.init(i, (bpm / 2))
@@ -94,15 +100,10 @@ func increment_score(by):
 		if combo > max_combo:
 			max_combo = combo
 	else:
-		combo_label.text = ""
-
-func reset_combo():
-	combo = 0
-	combo_label.text = ""
-
+		combo_label.text = "combo!"
 
 func _on_conductor_beat(pos):
-	spawn_notes(pos + 2)
+	spawn_notes(pos)
 	if $Friends/Birdo.frame == 0:
 		$Friends/Birdo.frame = 1
 	else:
@@ -111,6 +112,14 @@ func _on_conductor_beat(pos):
 		$Friends/Player.frame = 1
 	else:
 		$Friends/Player.frame = 0
+	if $Friends/Flute.frame == 0:
+		$Friends/Flute.frame = 1
+	else:
+		$Friends/Flute.frame = 0
+	if $Friends/Cymbal.frame == 0:
+		$Friends/Cymbal.frame = 1
+	else:
+		$Friends/Cymbal.frame = 0
 
 func get_beat_layout():
 	# Read file
@@ -136,11 +145,12 @@ func get_beat_layout():
 			last_set = content_list[i]
 		
 		var temp_bool_list = []
-		var total: int = 0
 		for char in content_list[i]:
 			var temp_int = char.to_int()
-			total += temp_int
-			temp_bool_list.append(bool(temp_int))
+			var temp_bool = bool(temp_int)
+			temp_bool_list.append(temp_bool)
+			if bool(temp_bool):
+				total_notes += 1
 		
 		new_content_list.append(temp_bool_list)
 		

@@ -1,19 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://die5mdq44fji3"]
+[gd_scene load_steps=21 format=3 uid="uid://die5mdq44fji3"]
 
 [ext_resource type="Script" path="res://Scripts/Level/level_2.gd" id="1_gy15x"]
 [ext_resource type="Texture2D" uid="uid://b4yuyc456vgwh" path="res://Assets/Backgrounds/log-background.png" id="2_6vuc5"]
 [ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/LevelUtil/Conductor.tscn" id="2_drufx"]
 [ext_resource type="AudioStream" uid="uid://c6lun161nbi36" path="res://Assets/Music/Song2.mp3" id="4_6xlko"]
 [ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/LevelUtil/button.tscn" id="4_c6qel"]
+[ext_resource type="Texture2D" uid="uid://jgkwi1h4ky0k" path="res://Assets/Friends/ShroomFlute1.png" id="6_e3gi2"]
 [ext_resource type="Texture2D" uid="uid://dxs3nh77ctn3c" path="res://Assets/Friends/Birdo1.png" id="6_fmkpc"]
+[ext_resource type="Texture2D" uid="uid://c7aubqmujr7qn" path="res://Assets/Friends/ShroomFlute2 (1).png" id="7_2dtuo"]
 [ext_resource type="Texture2D" uid="uid://0lo014guyhxr" path="res://Assets/Friends/Birdo2.png" id="7_rbahb"]
+[ext_resource type="Texture2D" uid="uid://d2cdiv1nmets1" path="res://Assets/Friends/Cymbal (1).png" id="8_b2xam"]
 [ext_resource type="Texture2D" uid="uid://gh7c75x3q2lm" path="res://Assets/Friends/ShroomDrummer.png" id="8_rw70w"]
-[ext_resource type="Texture2D" uid="uid://cn2tsj7ijf4eo" path="res://Assets/Friends/ShroomFlute.png" id="9_k0mce"]
-[ext_resource type="Texture2D" uid="uid://dchyp6we4cm3o" path="res://Assets/Friends/ShroomDrum.png" id="10_xd47w"]
+[ext_resource type="Texture2D" uid="uid://dg167e8hyf4p8" path="res://Assets/Friends/Cymbal (2).png" id="9_r3d30"]
 [ext_resource type="Texture2D" uid="uid://crynm7uk1ut15" path="res://Assets/Friends/LilDoodRight.png" id="11_ykqvv"]
 [ext_resource type="Texture2D" uid="uid://cedti5qvwky11" path="res://Assets/Friends/LilDoodLeft.png" id="12_eecei"]
+[ext_resource type="PackedScene" uid="uid://bvrn4nvtlpnd0" path="res://Scenes/LevelUtil/GraySquare.tscn" id="12_m2qs3"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dxgrb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1fsa7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -27,7 +30,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ebniy"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_c3dow"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -38,29 +41,35 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gg6f1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vh2bu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_k0mce")
+"texture": ExtResource("6_e3gi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2dtuo")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cyrop"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_s3mvn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_xd47w")
+"texture": ExtResource("8_b2xam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r3d30")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_je6hg"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0evgh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -85,12 +94,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0.658824, 0.0588235, 1)
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_6vuc5")
 stretch_mode = 6
+
+[node name="Friends" type="Node2D" parent="."]
+position = Vector2(508, 462)
+
+[node name="Birdo" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(408, -401)
+sprite_frames = SubResource("SpriteFrames_1fsa7")
+
+[node name="Drummer" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(-132, -97)
+sprite_frames = SubResource("SpriteFrames_c3dow")
+
+[node name="Flute" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(-124, 56)
+sprite_frames = SubResource("SpriteFrames_vh2bu")
+
+[node name="Cymbal" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(252, -51)
+sprite_frames = SubResource("SpriteFrames_s3mvn")
+
+[node name="Player" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(190, 82)
+sprite_frames = SubResource("SpriteFrames_0evgh")
+
+[node name="GraySquare" parent="." instance=ExtResource("12_m2qs3")]
 
 [node name="Conductor" parent="." instance=ExtResource("2_drufx")]
 stream = ExtResource("4_6xlko")
@@ -103,13 +138,13 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Panel2" type="Panel" parent="."]
-offset_left = 89.0
+offset_left = 82.0
 offset_top = 59.0
-offset_right = 743.0
+offset_right = 755.0
 offset_bottom = 266.0
 
 [node name="ButtonHolder" type="Node2D" parent="."]
-position = Vector2(416, 29)
+position = Vector2(438, 29)
 
 [node name="Button1" parent="ButtonHolder" instance=ExtResource("4_c6qel")]
 position = Vector2(0, 56)
@@ -132,29 +167,6 @@ button = "space"
 
 [node name="Notes" type="Node2D" parent="."]
 position = Vector2(716, 29)
-
-[node name="Friends" type="Node2D" parent="."]
-position = Vector2(495, 502)
-
-[node name="Birdo" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(534, -206)
-sprite_frames = SubResource("SpriteFrames_dxgrb")
-
-[node name="Drummer" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(360, 38)
-sprite_frames = SubResource("SpriteFrames_ebniy")
-
-[node name="Flute" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-270, 4)
-sprite_frames = SubResource("SpriteFrames_gg6f1")
-
-[node name="Cymbal" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(95, -41)
-sprite_frames = SubResource("SpriteFrames_cyrop")
-
-[node name="Player" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-78, -130)
-sprite_frames = SubResource("SpriteFrames_je6hg")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 809.0

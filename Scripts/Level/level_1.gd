@@ -33,19 +33,21 @@ var rand = 0
 
 var finished: bool = false
 
-var played_notes: int = 0
+var played_notes: float = 0
+var total_notes: float = 0
 
 func _ready():
-	
 	back.size = get_viewport_rect().size
-	
+	$GraySquare.re_size(get_viewport_rect().size)
 	get_beat_layout()
 	randomize()
 	conductor.play_with_beat_offset(2)
 
 func _process(delta):
+	$GraySquare.set_mixer(1 - ((played_notes-missed)/total_notes))
 	if get_viewport().size_changed:
 		back.size = get_viewport_rect().size
+		$GraySquare.re_size(get_viewport_rect().size)
 
 func _input(event):
 	if Input.is_action_pressed("ui_cancel"):
@@ -110,6 +112,14 @@ func _on_conductor_beat(pos):
 		$Friends/Player.frame = 1
 	else:
 		$Friends/Player.frame = 0
+	if $Friends/Flute.frame == 0:
+		$Friends/Flute.frame = 1
+	else:
+		$Friends/Flute.frame = 0
+	if $Friends/Cymbal.frame == 0:
+		$Friends/Cymbal.frame = 1
+	else:
+		$Friends/Cymbal.frame = 0
 
 func get_beat_layout():
 	# Read file
@@ -135,11 +145,12 @@ func get_beat_layout():
 			last_set = content_list[i]
 		
 		var temp_bool_list = []
-		var total: int = 0
 		for char in content_list[i]:
 			var temp_int = char.to_int()
-			total += temp_int
-			temp_bool_list.append(bool(temp_int))
+			var temp_bool = bool(temp_int)
+			temp_bool_list.append(temp_bool)
+			if bool(temp_bool):
+				total_notes += 1
 		
 		new_content_list.append(temp_bool_list)
 		

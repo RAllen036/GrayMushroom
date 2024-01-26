@@ -7,7 +7,7 @@ var level_paths = []
 var option_buffer: float = 300
 
 # This function is only called once when the scene is initialised / instantiated
-func _ready():
+func _on_ready():
 	
 	BackMusic.play()
 	

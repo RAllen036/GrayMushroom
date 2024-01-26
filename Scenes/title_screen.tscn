@@ -76,6 +76,7 @@ expand_mode = 1
 [node name="FadeIn" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
 [node name="FadeInImage" type="TextureRect" parent="."]
 layout_mode = 0
@@ -83,6 +84,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_l0ai1")
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="Background/AspectRatioContainer/Start" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Background/AspectRatioContainer/Quit" to="." method="_on_texture_button_2_pressed"]
 [connection signal="pressed" from="Info" to="." method="_on_info_pressed"]

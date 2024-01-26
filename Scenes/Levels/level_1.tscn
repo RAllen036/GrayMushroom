@@ -1,17 +1,20 @@
-[gd_scene load_steps=18 format=3 uid="uid://clcn0d0y07la2"]
+[gd_scene load_steps=21 format=3 uid="uid://clcn0d0y07la2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/level_1.gd" id="1_68uln"]
 [ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/LevelUtil/Conductor.tscn" id="2_02i07"]
 [ext_resource type="Texture2D" uid="uid://xi4cbdixjp2f" path="res://Assets/Backgrounds/cave-background.png" id="2_l1ga1"]
+[ext_resource type="PackedScene" uid="uid://bvrn4nvtlpnd0" path="res://Scenes/LevelUtil/GraySquare.tscn" id="3_orwh6"]
 [ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/LevelUtil/button.tscn" id="4_de52w"]
 [ext_resource type="AudioStream" uid="uid://lb7tpi446n0m" path="res://Assets/Music/Song1.mp3" id="4_sntx6"]
 [ext_resource type="Texture2D" uid="uid://dxs3nh77ctn3c" path="res://Assets/Friends/Birdo1.png" id="5_s07en"]
 [ext_resource type="Texture2D" uid="uid://0lo014guyhxr" path="res://Assets/Friends/Birdo2.png" id="6_v4wjp"]
 [ext_resource type="Texture2D" uid="uid://gh7c75x3q2lm" path="res://Assets/Friends/ShroomDrummer.png" id="7_fvdef"]
-[ext_resource type="Texture2D" uid="uid://cn2tsj7ijf4eo" path="res://Assets/Friends/ShroomFlute.png" id="8_uyjl1"]
-[ext_resource type="Texture2D" uid="uid://dchyp6we4cm3o" path="res://Assets/Friends/ShroomDrum.png" id="9_88pn0"]
+[ext_resource type="Texture2D" uid="uid://jgkwi1h4ky0k" path="res://Assets/Friends/ShroomFlute1.png" id="9_u4ofq"]
+[ext_resource type="Texture2D" uid="uid://c7aubqmujr7qn" path="res://Assets/Friends/ShroomFlute2 (1).png" id="10_lcuel"]
 [ext_resource type="Texture2D" uid="uid://crynm7uk1ut15" path="res://Assets/Friends/LilDoodRight.png" id="10_oktv3"]
+[ext_resource type="Texture2D" uid="uid://d2cdiv1nmets1" path="res://Assets/Friends/Cymbal (1).png" id="11_6roni"]
 [ext_resource type="Texture2D" uid="uid://cedti5qvwky11" path="res://Assets/Friends/LilDoodLeft.png" id="11_6417w"]
+[ext_resource type="Texture2D" uid="uid://dg167e8hyf4p8" path="res://Assets/Friends/Cymbal (2).png" id="12_ryck4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rq062"]
 animations = [{
@@ -42,7 +45,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_uyjl1")
+"texture": ExtResource("9_u4ofq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lcuel")
 }],
 "loop": true,
 "name": &"default",
@@ -53,7 +59,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_88pn0")
+"texture": ExtResource("11_6roni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ryck4")
 }],
 "loop": true,
 "name": &"default",
@@ -93,47 +102,6 @@ offset_bottom = 40.0
 texture = ExtResource("2_l1ga1")
 stretch_mode = 6
 
-[node name="Conductor" parent="." instance=ExtResource("2_02i07")]
-stream = ExtResource("4_sntx6")
-
-[node name="StartWait" type="Timer" parent="."]
-one_shot = true
-
-[node name="EndWait" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="Panel2" type="Panel" parent="."]
-offset_left = 82.0
-offset_top = 59.0
-offset_right = 755.0
-offset_bottom = 266.0
-
-[node name="ButtonHolder" type="Node2D" parent="."]
-position = Vector2(416, 29)
-
-[node name="Button1" parent="ButtonHolder" instance=ExtResource("4_de52w")]
-position = Vector2(0, 56)
-
-[node name="Button2" parent="ButtonHolder" instance=ExtResource("4_de52w")]
-position = Vector2(0, 94)
-button = "s"
-
-[node name="Button3" parent="ButtonHolder" instance=ExtResource("4_de52w")]
-position = Vector2(0, 132)
-button = "d"
-
-[node name="Button4" parent="ButtonHolder" instance=ExtResource("4_de52w")]
-position = Vector2(0, 170)
-button = "f"
-
-[node name="Button5" parent="ButtonHolder" instance=ExtResource("4_de52w")]
-position = Vector2(0, 208)
-button = "space"
-
-[node name="Notes" type="Node2D" parent="."]
-position = Vector2(716, 29)
-
 [node name="Friends" type="Node2D" parent="."]
 position = Vector2(495, 502)
 
@@ -158,6 +126,49 @@ sprite_frames = SubResource("SpriteFrames_1tjoh")
 position = Vector2(222, 34)
 sprite_frames = SubResource("SpriteFrames_koov5")
 frame_progress = 0.861313
+
+[node name="GraySquare" parent="." instance=ExtResource("3_orwh6")]
+
+[node name="Conductor" parent="." instance=ExtResource("2_02i07")]
+stream = ExtResource("4_sntx6")
+
+[node name="StartWait" type="Timer" parent="."]
+one_shot = true
+
+[node name="EndWait" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 82.0
+offset_top = 59.0
+offset_right = 755.0
+offset_bottom = 266.0
+
+[node name="ButtonHolder" type="Node2D" parent="."]
+position = Vector2(438, 29)
+
+[node name="Button1" parent="ButtonHolder" instance=ExtResource("4_de52w")]
+position = Vector2(0, 56)
+
+[node name="Button2" parent="ButtonHolder" instance=ExtResource("4_de52w")]
+position = Vector2(0, 94)
+button = "s"
+
+[node name="Button3" parent="ButtonHolder" instance=ExtResource("4_de52w")]
+position = Vector2(0, 132)
+button = "d"
+
+[node name="Button4" parent="ButtonHolder" instance=ExtResource("4_de52w")]
+position = Vector2(0, 170)
+button = "f"
+
+[node name="Button5" parent="ButtonHolder" instance=ExtResource("4_de52w")]
+position = Vector2(0, 208)
+button = "space"
+
+[node name="Notes" type="Node2D" parent="."]
+position = Vector2(716, 29)
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 809.0

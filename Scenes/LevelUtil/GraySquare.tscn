@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvrn4nvtlpnd0"]
+
+[ext_resource type="Script" path="res://Scripts/Level/GraySquare.gd" id="1_g66rk"]
+[ext_resource type="Shader" path="res://Shaders/gray_scale.gdshader" id="3_fnuqo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5s8f0"]
+shader = ExtResource("3_fnuqo")
+shader_parameter/mixer = 1.0
+
+[node name="GraySquare" type="Node2D"]
+script = ExtResource("1_g66rk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5s8f0")
+offset_right = 50.0
+offset_bottom = 50.0

@@ -10,22 +10,25 @@ var total_notes: int = 0
 var grade = "NA"
 
 func eval_grade():
-	var miss_per: float = missed / total_notes
-	print(miss_per)
-	print(missed)
-	print(total_notes)
-	if miss_per < 0.1:
+	var total = great + good + okay
+	var percent = total / total_notes
+	
+	if percent > 0.9:
 		grade = "A+"
-	elif miss_per < 0.15:
+	elif percent > 0.85:
 		grade = "A"
-	elif miss_per < 0.2:
+	elif percent > 0.8:
+		grade = "A-"
+	elif percent > 0.7:
 		grade = "B"
-	elif miss_per < 0.3:
+	elif percent > 0.6:
 		grade = "C"
-	elif miss_per < 0.4:
+	elif percent > 0.5:
 		grade = "D"
-	elif miss_per < 0.5:
+	elif percent > 0.4:
 		grade = "E"
-	elif miss_per < 0.6:
+	elif percent > 0.3:
 		grade = "F"
+	else:
+		grade = "NA"
 	

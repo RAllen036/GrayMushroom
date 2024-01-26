@@ -1,18 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf28cm4kir0y8"]
+[gd_scene load_steps=21 format=3 uid="uid://bf28cm4kir0y8"]
 
 [ext_resource type="Script" path="res://Scripts/Level/level_3.gd" id="1_24uky"]
+[ext_resource type="Texture2D" uid="uid://dlugt66calw4l" path="res://Assets/Backgrounds/concert-background.png" id="2_b5qam"]
 [ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/LevelUtil/Conductor.tscn" id="2_iobx6"]
 [ext_resource type="AudioStream" uid="uid://dqc32o1nydlw1" path="res://Assets/Music/Song3True.mp3" id="3_kuyp0"]
 [ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/LevelUtil/button.tscn" id="4_a0eoq"]
 [ext_resource type="Texture2D" uid="uid://dxs3nh77ctn3c" path="res://Assets/Friends/Birdo1.png" id="5_04edy"]
+[ext_resource type="Texture2D" uid="uid://jgkwi1h4ky0k" path="res://Assets/Friends/ShroomFlute1.png" id="6_a5bob"]
 [ext_resource type="Texture2D" uid="uid://0lo014guyhxr" path="res://Assets/Friends/Birdo2.png" id="6_yr6b1"]
 [ext_resource type="Texture2D" uid="uid://gh7c75x3q2lm" path="res://Assets/Friends/ShroomDrummer.png" id="7_pkun0"]
-[ext_resource type="Texture2D" uid="uid://cn2tsj7ijf4eo" path="res://Assets/Friends/ShroomFlute.png" id="8_5omw0"]
-[ext_resource type="Texture2D" uid="uid://dchyp6we4cm3o" path="res://Assets/Friends/ShroomDrum.png" id="9_u57a5"]
+[ext_resource type="Texture2D" uid="uid://c7aubqmujr7qn" path="res://Assets/Friends/ShroomFlute2 (1).png" id="7_u062d"]
+[ext_resource type="Texture2D" uid="uid://d2cdiv1nmets1" path="res://Assets/Friends/Cymbal (1).png" id="8_hubae"]
+[ext_resource type="Texture2D" uid="uid://dg167e8hyf4p8" path="res://Assets/Friends/Cymbal (2).png" id="9_5a1t8"]
 [ext_resource type="Texture2D" uid="uid://crynm7uk1ut15" path="res://Assets/Friends/LilDoodRight.png" id="10_nvgdg"]
 [ext_resource type="Texture2D" uid="uid://cedti5qvwky11" path="res://Assets/Friends/LilDoodLeft.png" id="11_pnp3q"]
+[ext_resource type="PackedScene" uid="uid://bvrn4nvtlpnd0" path="res://Scenes/LevelUtil/GraySquare.tscn" id="12_d3yxs"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_c5j6w"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmxry"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -26,7 +30,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cb3ya"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_alxke"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -37,29 +41,35 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s4ts5"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gm73n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_5omw0")
+"texture": ExtResource("6_a5bob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u062d")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_txv7o"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xoco1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_u57a5")
+"texture": ExtResource("8_hubae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5a1t8")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7s7ho"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wl6bp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -84,11 +94,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.568627, 0.913725, 1, 1)
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+texture = ExtResource("2_b5qam")
 stretch_mode = 6
+
+[node name="Friends" type="Node2D" parent="."]
+position = Vector2(856, 508)
+scale = Vector2(0.996857, 1.01393)
+
+[node name="Birdo" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(-267.842, -51.2857)
+sprite_frames = SubResource("SpriteFrames_rmxry")
+
+[node name="Drummer" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(-73, -48)
+sprite_frames = SubResource("SpriteFrames_alxke")
+
+[node name="Flute" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(-124, 56)
+sprite_frames = SubResource("SpriteFrames_gm73n")
+
+[node name="Cymbal" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(86, -58)
+sprite_frames = SubResource("SpriteFrames_xoco1")
+
+[node name="Player" type="AnimatedSprite2D" parent="Friends"]
+position = Vector2(222, 34)
+sprite_frames = SubResource("SpriteFrames_wl6bp")
+
+[node name="GraySquare" parent="." instance=ExtResource("12_d3yxs")]
 
 [node name="Conductor" parent="." instance=ExtResource("2_iobx6")]
 stream = ExtResource("3_kuyp0")
@@ -104,11 +142,11 @@ one_shot = true
 [node name="Panel2" type="Panel" parent="."]
 offset_left = 82.0
 offset_top = 59.0
-offset_right = 752.0
+offset_right = 755.0
 offset_bottom = 266.0
 
 [node name="ButtonHolder" type="Node2D" parent="."]
-position = Vector2(416, 29)
+position = Vector2(438, 29)
 
 [node name="Button1" parent="ButtonHolder" instance=ExtResource("4_a0eoq")]
 position = Vector2(0, 56)
@@ -131,29 +169,6 @@ button = "space"
 
 [node name="Notes" type="Node2D" parent="."]
 position = Vector2(716, 29)
-
-[node name="Friends" type="Node2D" parent="."]
-position = Vector2(495, 502)
-
-[node name="Birdo" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(28, 95)
-sprite_frames = SubResource("SpriteFrames_c5j6w")
-
-[node name="Drummer" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-73, -48)
-sprite_frames = SubResource("SpriteFrames_cb3ya")
-
-[node name="Flute" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-124, 56)
-sprite_frames = SubResource("SpriteFrames_s4ts5")
-
-[node name="Cymbal" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(86, -58)
-sprite_frames = SubResource("SpriteFrames_txv7o")
-
-[node name="Player" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(222, 34)
-sprite_frames = SubResource("SpriteFrames_7s7ho")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 809.0
@@ -179,6 +194,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -29.0
+offset_right = 66.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Combo!"
