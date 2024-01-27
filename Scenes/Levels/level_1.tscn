@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://clcn0d0y07la2"]
+[gd_scene load_steps=15 format=3 uid="uid://clcn0d0y07la2"]
 
 [ext_resource type="Script" path="res://Scripts/Level/level_1.gd" id="1_68uln"]
 [ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/LevelUtil/Conductor.tscn" id="2_02i07"]
@@ -6,29 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bvrn4nvtlpnd0" path="res://Scenes/LevelUtil/GraySquare.tscn" id="3_orwh6"]
 [ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/LevelUtil/button.tscn" id="4_de52w"]
 [ext_resource type="AudioStream" uid="uid://lb7tpi446n0m" path="res://Assets/Music/Song1.mp3" id="4_sntx6"]
-[ext_resource type="Texture2D" uid="uid://dxs3nh77ctn3c" path="res://Assets/Friends/Birdo1.png" id="5_s07en"]
-[ext_resource type="Texture2D" uid="uid://0lo014guyhxr" path="res://Assets/Friends/Birdo2.png" id="6_v4wjp"]
 [ext_resource type="Texture2D" uid="uid://gh7c75x3q2lm" path="res://Assets/Friends/ShroomDrummer.png" id="7_fvdef"]
 [ext_resource type="Texture2D" uid="uid://jgkwi1h4ky0k" path="res://Assets/Friends/ShroomFlute1.png" id="9_u4ofq"]
 [ext_resource type="Texture2D" uid="uid://c7aubqmujr7qn" path="res://Assets/Friends/ShroomFlute2 (1).png" id="10_lcuel"]
-[ext_resource type="Texture2D" uid="uid://crynm7uk1ut15" path="res://Assets/Friends/LilDoodRight.png" id="10_oktv3"]
 [ext_resource type="Texture2D" uid="uid://d2cdiv1nmets1" path="res://Assets/Friends/Cymbal (1).png" id="11_6roni"]
-[ext_resource type="Texture2D" uid="uid://cedti5qvwky11" path="res://Assets/Friends/LilDoodLeft.png" id="11_6417w"]
 [ext_resource type="Texture2D" uid="uid://dg167e8hyf4p8" path="res://Assets/Friends/Cymbal (2).png" id="12_ryck4"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rq062"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_s07en")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_v4wjp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7v3xm"]
 animations = [{
@@ -69,20 +51,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_koov5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_oktv3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_6417w")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}]
-
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_68uln")
 beat_file_name = "Level_1"
@@ -105,27 +73,17 @@ stretch_mode = 6
 [node name="Friends" type="Node2D" parent="."]
 position = Vector2(495, 502)
 
-[node name="Birdo" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(28, 95)
-sprite_frames = SubResource("SpriteFrames_rq062")
-frame_progress = 0.18677
-
 [node name="Drummer" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-73, -48)
+position = Vector2(-423, -6)
 sprite_frames = SubResource("SpriteFrames_7v3xm")
 
 [node name="Flute" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-124, 56)
+position = Vector2(-59, 21)
 sprite_frames = SubResource("SpriteFrames_kalq1")
 
 [node name="Cymbal" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(86, -58)
+position = Vector2(195, 13)
 sprite_frames = SubResource("SpriteFrames_1tjoh")
-
-[node name="Player" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(222, 34)
-sprite_frames = SubResource("SpriteFrames_koov5")
-frame_progress = 0.861313
 
 [node name="GraySquare" parent="." instance=ExtResource("3_orwh6")]
 

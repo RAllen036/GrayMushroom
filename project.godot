@@ -25,6 +25,10 @@ BackMusic="*res://Globals/background_noise.gd"
 
 project/assembly_name="GrayMushroom"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [input]
 
 left={

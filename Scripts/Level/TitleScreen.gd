@@ -20,7 +20,6 @@ func _on_texture_button_2_pressed():
 	get_tree().quit()
 
 func _process(delta):
-	
 	if fade:
 		# IDK, do some fade in animation
 		pass
@@ -32,6 +31,7 @@ func _process(delta):
 		$Background.size = view
 		$FadeInImage.size = view
 		$Info/JamBackground.size = view
+		$Info/JamBackground.global_position = Vector2.ZERO
 		
 
 func _on_fade_in_timeout():

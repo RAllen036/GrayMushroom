@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cedti5qvwky11" path="res://Assets/Friends/LilDoodLeft.png" id="12_eecei"]
 [ext_resource type="PackedScene" uid="uid://bvrn4nvtlpnd0" path="res://Scenes/LevelUtil/GraySquare.tscn" id="12_m2qs3"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1fsa7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhumg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -30,7 +30,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_c3dow"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vckwm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -41,7 +41,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vh2bu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0q7fs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -55,7 +55,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s3mvn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmce4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -69,7 +69,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0evgh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2kqb4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -94,7 +94,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.658824, 0.0588235, 1)
+color = Color(0, 0.572549, 0, 1)
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -103,27 +103,27 @@ texture = ExtResource("2_6vuc5")
 stretch_mode = 6
 
 [node name="Friends" type="Node2D" parent="."]
-position = Vector2(508, 462)
+position = Vector2(463, 490)
 
 [node name="Birdo" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(408, -401)
-sprite_frames = SubResource("SpriteFrames_1fsa7")
+position = Vector2(557, -182)
+sprite_frames = SubResource("SpriteFrames_jhumg")
 
 [node name="Drummer" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-132, -97)
-sprite_frames = SubResource("SpriteFrames_c3dow")
+position = Vector2(16, -53)
+sprite_frames = SubResource("SpriteFrames_vckwm")
 
 [node name="Flute" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-124, 56)
-sprite_frames = SubResource("SpriteFrames_vh2bu")
+position = Vector2(-183, 58)
+sprite_frames = SubResource("SpriteFrames_0q7fs")
 
 [node name="Cymbal" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(252, -51)
-sprite_frames = SubResource("SpriteFrames_s3mvn")
+position = Vector2(231, -71)
+sprite_frames = SubResource("SpriteFrames_pmce4")
 
 [node name="Player" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(190, 82)
-sprite_frames = SubResource("SpriteFrames_0evgh")
+position = Vector2(432, 54)
+sprite_frames = SubResource("SpriteFrames_2kqb4")
 
 [node name="GraySquare" parent="." instance=ExtResource("12_m2qs3")]
 

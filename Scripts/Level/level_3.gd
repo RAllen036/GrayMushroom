@@ -124,7 +124,8 @@ func _on_conductor_beat(pos):
 func get_beat_layout():
 	# Read file
 	# Gets the file as an object
-	var file = FileAccess.open("res://BeatLayout/" + beat_file_name + ".txt", FileAccess.READ)
+	var file = FileAccess.open("res://Assets/BeatLayout/" + beat_file_name + ".txt", FileAccess.READ)
+	
 	# Gets the contents of the file
 	var content = file.get_as_text()
 	# Good practice so that corruption is less likely

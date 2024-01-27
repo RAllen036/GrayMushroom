@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/Level/level_3.gd" id="1_24uky"]
 [ext_resource type="Texture2D" uid="uid://dlugt66calw4l" path="res://Assets/Backgrounds/concert-background.png" id="2_b5qam"]
 [ext_resource type="PackedScene" uid="uid://bhxuchdelos2i" path="res://Scenes/LevelUtil/Conductor.tscn" id="2_iobx6"]
-[ext_resource type="AudioStream" uid="uid://dqc32o1nydlw1" path="res://Assets/Music/Song3True.mp3" id="3_kuyp0"]
 [ext_resource type="PackedScene" uid="uid://dot63omjt4icn" path="res://Scenes/LevelUtil/button.tscn" id="4_a0eoq"]
 [ext_resource type="Texture2D" uid="uid://dxs3nh77ctn3c" path="res://Assets/Friends/Birdo1.png" id="5_04edy"]
 [ext_resource type="Texture2D" uid="uid://jgkwi1h4ky0k" path="res://Assets/Friends/ShroomFlute1.png" id="6_a5bob"]
@@ -15,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://crynm7uk1ut15" path="res://Assets/Friends/LilDoodRight.png" id="10_nvgdg"]
 [ext_resource type="Texture2D" uid="uid://cedti5qvwky11" path="res://Assets/Friends/LilDoodLeft.png" id="11_pnp3q"]
 [ext_resource type="PackedScene" uid="uid://bvrn4nvtlpnd0" path="res://Scenes/LevelUtil/GraySquare.tscn" id="12_d3yxs"]
+[ext_resource type="AudioStream" uid="uid://lb7tpi446n0m" path="res://Assets/Music/Song1.mp3" id="14_4drhv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rmxry"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gjdc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -30,7 +30,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_alxke"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_usoa4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -41,7 +41,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gm73n"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4timc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -55,7 +55,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xoco1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vpbnd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -69,7 +69,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_wl6bp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_85pjp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -94,7 +94,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.568627, 0.913725, 1, 1)
+color = Color(0.462745, 0.780392, 1, 1)
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -103,34 +103,32 @@ texture = ExtResource("2_b5qam")
 stretch_mode = 6
 
 [node name="Friends" type="Node2D" parent="."]
-position = Vector2(856, 508)
-scale = Vector2(0.996857, 1.01393)
+position = Vector2(495, 502)
 
 [node name="Birdo" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-267.842, -51.2857)
-sprite_frames = SubResource("SpriteFrames_rmxry")
+position = Vector2(85, -77)
+sprite_frames = SubResource("SpriteFrames_0gjdc")
 
 [node name="Drummer" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-73, -48)
-sprite_frames = SubResource("SpriteFrames_alxke")
+position = Vector2(462, 35)
+sprite_frames = SubResource("SpriteFrames_usoa4")
 
 [node name="Flute" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(-124, 56)
-sprite_frames = SubResource("SpriteFrames_gm73n")
+position = Vector2(-104, -124)
+sprite_frames = SubResource("SpriteFrames_4timc")
 
 [node name="Cymbal" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(86, -58)
-sprite_frames = SubResource("SpriteFrames_xoco1")
+position = Vector2(-226, -82)
+sprite_frames = SubResource("SpriteFrames_vpbnd")
 
 [node name="Player" type="AnimatedSprite2D" parent="Friends"]
-position = Vector2(222, 34)
-sprite_frames = SubResource("SpriteFrames_wl6bp")
+position = Vector2(-336, -141)
+sprite_frames = SubResource("SpriteFrames_85pjp")
 
 [node name="GraySquare" parent="." instance=ExtResource("12_d3yxs")]
 
 [node name="Conductor" parent="." instance=ExtResource("2_iobx6")]
-stream = ExtResource("3_kuyp0")
-bpm = 260
+stream = ExtResource("14_4drhv")
 
 [node name="StartWait" type="Timer" parent="."]
 one_shot = true
@@ -194,7 +192,6 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -29.0
-offset_right = 66.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Combo!"

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var level_option = preload("res://Scenes/Levels/level_option.tscn")
+@onready var level_option = load("res://Scenes/Levels/level_option.tscn")
 @onready var option_ref_pos = $LevelOptions
 
 var level_paths = []
@@ -8,7 +8,6 @@ var option_buffer: float = 300
 
 # This function is only called once when the scene is initialised / instantiated
 func _on_ready():
-	
 	BackMusic.play()
 	
 	# Gets all the files in the Levels folder
@@ -17,7 +16,7 @@ func _on_ready():
 	# Because we only want the scenes that the player can travel to from here
 	
 	# Gets all the files in the Levels folder
-	var files = DirAccess.get_files_at("res://Scenes/Levels") 
+	var files = DirAccess.get_files_at("res://Scenes/Levels")
 	
 	# Loops backwards so that you don't miss a file
 	# If index 0 is removed then index 1 of the original won't get read
